@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - Cedrick Garcia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: cursive, sans-serif;
+            color: white;
+            line-height: 1.8;
+            text-align: justify;
+            background-color: #121212;
+        }
+
+        .background-img {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            object-fit: cover;
+            filter: brightness(50%);
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1002;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .header-left {
+            font-family: 'Dancing Script', cursive;
+            font-size: 30px;
+            color: white;
+        }
+
+        .header-left .name span {
+            color: #5f2e00;
+        }
+
+        .menu-toggle {
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+            z-index: 1003;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            transform: translateY(-100%);
+            transition: transform 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1001;
+        }
+
+        nav.open {
+            transform: translateY(0);
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 15px 0;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            font-size: 24px;
+            color: white;
+            padding: 10px 20px;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #d1009d;
+            box-shadow: 0 5px 15px rgba(212, 0, 166, 0.5);
+            transform: translateY(-5px);
+        }
+
+        main {
+            margin-top: 150px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .about-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+            color: #ddd;
+        }
+
+        .about-container h2 {
+            font-size: 36px;
+            color: #00bcd4;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .about-container p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 14px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <img src="images/bg.gif" alt="Background" class="background-img">
+
+    <header>
+        <div class="header-left">
+            <span class="name"><span>C</span>edrick 
+        </div>
+        
+        <div class="menu-toggle" onclick="toggleMenu()">&#9776;</div>
+    </header>
+
+    <nav id="navbar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="project.htm">Project</a></li>
+            <li><a href="contact.htm">Contact</a></li>
+            <li><a href="about.htm">About</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="about-container">
+            <h2>About</h2>
+            <p>Hi, I’m Cedrick Garcia, an Information Systems student driven by a passion for technology and its impact on modern business processes. My academic journey has allowed me to delve deep into areas like database management, system analysis, and software development. Beyond coursework, I enjoy exploring innovative tools and techniques that improve efficiency and collaboration in various industries.</p>
+            <p>When I’m not coding or solving system-related challenges, you’ll find me staying updated on the latest trends in tech or working on personal projects. My goal is to bridge the gap between technology and people, ensuring that the systems I design are both user-friendly and powerful enough to drive progress. Thank you for visiting my page, and I look forward to sharing more about my journey!</p>
+        </div>
+    </main>
+
+    <script>
+        function toggleMenu() {
+            const navbar = document.getElementById('navbar');
+            navbar.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>
