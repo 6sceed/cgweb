@@ -1,1 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cedrick Garcia - Web Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: cursive, sans-serif;
+            color: white;
+            line-height: 1.6;
+        }
+
+        .background-img {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            object-fit: cover;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1002;
+            background-color: rgba(0, 0, 0, 0.6); 
+        }
+
+        .header-left {
+            font-family: 'Dancing Script', cursive;
+            font-size: 30px;
+            color: white;
+            letter-spacing: 2px;
+        }
+
+        .header-left .name {
+            color: #ffffff;
+        }
+
+        .header-left .name span {
+            color: #5f2e00;
+        }
+
+        .menu-toggle {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            align-items: center;
+            width: 30px;
+            height: 20px;
+            cursor: pointer;
+            z-index: 1003;
+            transition: transform 0.3s ease; 
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 100%;
+            height: 4px;
+            background-color: white;
+            transition: transform 0.3s ease, opacity 0.3s ease; /
+        }
+
+        .menu-toggle.open {
+            transform: rotate(45deg); 
+        }
+
+        .menu-toggle.open span:nth-child(1) {
+            transform: translateY(6px) rotate(45deg); 
+        }
+
+        .menu-toggle.open span:nth-child(2) {
+            opacity: 0; 
+        }
+
+        .menu-toggle.open span:nth-child(3) {
+            transform: translateY(-6px) rotate(-45deg); 
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            transform: translateY(-100%);
+            transition: transform 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1001;
+        }
+
+        nav.open {
+            transform: translateY(0);
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 15px 0;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            font-size: 24px;
+            color: white;
+            padding: 10px 20px;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #d1009d;
+            box-shadow: 0 5px 15px rgba(197, 6, 214, 0.438);
+            transform: translateY(-5px);
+        }
+
+        main {
+            margin-top: 120px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .intro {
+            font-size: 24px;
+            margin-top: 150px;
+        }
+
+        .intro .name {
+            color: #d1009d;
+            font-size: 30px;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <img src="images/bg.gif" alt="Background" class="background-img">
+
+    <header>
+        
+        <div class="header-left">
+            <span class="name"><span>C</span>edrick </span> 
+        </div>
+        
+        
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    
+    <nav id="navbar">
+        <ul>
+            <li><a href="home.htm">Home</a></li>
+            <li><a href="project.htm">Projects</a></li>
+            <li><a href="contact.htm">Contact</a></li>
+            <li><a href="about.htm">About</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="intro">
+            <p>Hi, I'm <span class="name">Cedrick Garcia</span>, a passionate web developer.</p>
+            <p>I specialize in creating innovative and responsive websites with a focus on user experience.</p>
+            <p>Welcome to my personal space!</p>
+        </div>
+    </main>
+
+    <script>
+        function toggleMenu() {
+            const navbar = document.getElementById('navbar');
+            const menuToggle = document.querySelector('.menu-toggle');
+            navbar.classList.toggle('open');
+            menuToggle.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>
