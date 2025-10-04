@@ -1,204 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cedrick Garcia - Web Developer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cedrick Garcia - Web Developer</title>
 
-        body {
-            font-family: cursive, sans-serif;
-            color: white;
-            line-height: 1.6;
-        }
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
-        .background-img {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            object-fit: cover;
-        }
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1002;
-            background-color: rgba(0, 0, 0, 0.6); 
-        }
+  <!-- Spline script -->
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.64/build/spline-viewer.js"></script>
 
-        .header-left {
-            font-family: 'Dancing Script', cursive;
-            font-size: 30px;
-            color: white;
-            letter-spacing: 2px;
-        }
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        .header-left .name {
-            color: #ffffff;
-        }
+    html, body {
+      height: 100%;
+      background: black;
+      font-family: 'Poppins', sans-serif;
+      color: white;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-        .header-left .name span {
-            color: #5f2e00;
-        }
+    /* Background Spline */
+    spline-viewer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: block;
+    }
 
-        .menu-toggle {
-            display: flex;
-            justify-content: space-between;
-            flex-direction: column;
-            align-items: center;
-            width: 30px;
-            height: 20px;
-            cursor: pointer;
-            z-index: 1003;
-            transition: transform 0.3s ease; 
-        }
+    .watermark-cover {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      width: 160px;
+      height: 70px;
+      background: black;
+      z-index: 5;
+    }
 
-        .menu-toggle span {
-            display: block;
-            width: 100%;
-            height: 4px;
-            background-color: white;
-            transition: transform 0.3s ease, opacity 0.3s ease; /
-        }
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 15px 40px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      z-index: 10;
+      background-color: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(6px);
+    }
 
-        .menu-toggle.open {
-            transform: rotate(45deg); 
-        }
+    nav {
+      display: flex;
+      gap: 30px;
+    }
 
-        .menu-toggle.open span:nth-child(1) {
-            transform: translateY(6px) rotate(45deg); 
-        }
+    nav a {
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: white;
+      position: relative;
+      transition: all 0.3s ease;
+    }
 
-        .menu-toggle.open span:nth-child(2) {
-            opacity: 0; 
-        }
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 0;
+      height: 2px;
+      background: yellow;
+      box-shadow: 0 0 8px yellow;
+      transition: width 0.3s ease;
+    }
 
-        .menu-toggle.open span:nth-child(3) {
-            transform: translateY(-6px) rotate(-45deg); 
-        }
+    nav a:hover {
+      color: yellow;
+    }
 
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            transform: translateY(-100%);
-            transition: transform 0.5s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 1001;
-        }
+    nav a:hover::after {
+      width: 100%;
+    }
 
-        nav.open {
-            transform: translateY(0);
-        }
+    /* Main intro */
+    main {
+      margin-top: 160px;
+      padding: 20px;
+      text-align: left;
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin-left: 60px;
+    }
 
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-        }
+    .intro h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeSlideDown 1s ease forwards;
+    }
 
-        nav ul li {
-            margin: 15px 0;
-        }
+    .intro h1 span {
+      color: white;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+    }
 
-        nav ul li a {
-            text-decoration: none;
-            font-size: 24px;
-            color: white;
-            padding: 10px 20px;
-            transition: all 0.3s ease;
-        }
+    .intro h1 span:hover {
+      color: yellow;
+      text-shadow: 0 0 15px yellow;
+    }
 
-        nav ul li a:hover {
-            color: #d1009d;
-            box-shadow: 0 5px 15px rgba(197, 6, 214, 0.438);
-            transform: translateY(-5px);
-        }
+    .intro p {
+      font-size: 1.2rem;
+      color: #cccccc;
+      margin-bottom: 30px;
+      line-height: 1.8;
+      opacity: 0;
+      animation: fadeSlideUp 1.2s ease forwards;
+      animation-delay: 0.5s;
+    }
 
-        main {
-            margin-top: 120px;
-            padding: 20px;
-            text-align: center;
-        }
+    .buttons {
+      display: flex;
+      gap: 20px;
+      opacity: 0;
+      animation: fadeSlideUp 1.2s ease forwards;
+      animation-delay: 1s;
+    }
 
-      .intro {
-    text-align: center;
-    margin-top: 100px;
-}
+    .btn {
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
 
-.intro .name {
-    font-size: 3rem; 
-    font-weight: bold;
-    color: #ff9900; 
-    font-family: 'Arial', sans-serif;
-    display: inline-block;
-    padding: 20px;
-}
+    .btn-primary {
+      background: white;
+      color: black;
+    }
 
-    </style>
+    .btn-primary:hover {
+      background: yellow;
+      box-shadow: 0 0 12px yellow;
+      color: black;
+    }
+
+    .btn-outline {
+      border: 2px solid white;
+      color: white;
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      background: yellow;
+      border-color: yellow;
+      color: black;
+      box-shadow: 0 0 12px yellow;
+    }
+
+    /* Animations */
+    @keyframes fadeSlideDown {
+      0% { opacity: 0; transform: translateY(-40px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeSlideUp {
+      0% { opacity: 0; transform: translateY(40px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
-    
-    <img src="images/bg.gif" alt="Background" class="background-img">
 
-    <header>
-        
-        <div class="header-left">
-            <span class="name"><span>C</span>edrick </span> 
-        </div>
-        
-        
-        <div class="menu-toggle" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </header>
+  <!-- Background Spline -->
+  <spline-viewer url="https://prod.spline.design/KdhmMbzqxPVJX5v3/scene.splinecode"></spline-viewer>
+  <div class="watermark-cover"></div>
 
-    
-    <nav id="navbar">
-        <ul>
-            <li><a href="home.htm">Home</a></li>
-            <li><a href="project.htm">Projects</a></li>
-            <li><a href="contact.htm">Contact</a></li>
-            <li><a href="about.htm">About</a></li>
-        </ul>
+  <!-- Header -->
+  <header>
+    <nav>
+      <a href="home.htm">Home</a>
+      <a href="about.htm">About</a>
     </nav>
+  </header>
 
-    <main>
-        <div class="intro">
-            <p> <span class="name">🚧 Hello.</span></p>
-            
-        </div>
-    </main>
+  <!-- Main Intro -->
+  <main>
+    <div class="intro">
+      <h1>Hello, <span>I’m Ced</span></h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur. At libero sit nec tincidunt eu at semper. 
+        Phasellus lorem laoreet amet sem imperdiet.  
+      </p>
+      <div class="buttons">
+        <a href="contact.htm" class="btn btn-primary">Get in Touch</a>
+        <a href="project.htm" class="btn btn-outline">View All Works</a>
+      </div>
+    </div>
+  </main>
 
-    <script>
-        function toggleMenu() {
-            const navbar = document.getElementById('navbar');
-            const menuToggle = document.querySelector('.menu-toggle');
-            navbar.classList.toggle('open');
-            menuToggle.classList.toggle('open');
-        }
-    </script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

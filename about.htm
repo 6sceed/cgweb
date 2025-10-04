@@ -1,176 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me - Cedrick Garcia</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Me - Cedrick Garcia</title>
 
-        body {
-            font-family: cursive, sans-serif;
-            color: white;
-            line-height: 1.8;
-            text-align: justify;
-            background-color: #121212;
-        }
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
-        .background-img {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            object-fit: cover;
-            filter: brightness(50%);
-        }
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Poppins', sans-serif;
+      background-color: #121212;
+      color: white;
+    }
 
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 1002;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-        }
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 15px 40px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      background: black;
+      z-index: 1000;
+    }
 
-        .header-left {
-            font-family: 'Dancing Script', cursive;
-            font-size: 30px;
-            color: white;
-        }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+      margin: 0;
+    }
 
-        .header-left .name span {
-            color: #5f2e00;
-        }
+    nav ul li a {
+      text-decoration: none;
+      font-size: 18px;
+      color: white;
+      position: relative;
+      transition: color 0.3s ease;
+    }
 
-        .menu-toggle {
-            font-size: 30px;
-            color: white;
-            cursor: pointer;
-            z-index: 1003;
-        }
+    nav ul li a::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: gold;
+      transition: width 0.3s ease;
+    }
 
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            transform: translateY(-100%);
-            transition: transform 0.5s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 1001;
-        }
+    nav ul li a:hover {
+      color: gold;
+      text-shadow: 0 0 8px gold, 0 0 15px gold;
+    }
 
-        nav.open {
-            transform: translateY(0);
-        }
+    nav ul li a:hover::after {
+      width: 100%;
+    }
 
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-        }
+    .about-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 50px;
+      height: 100vh;
+      padding: 20px;
+    }
 
-        nav ul li {
-            margin: 15px 0;
-        }
+    .about-img img {
+      width: 100%;
+      max-width: 350px;
+      border: 5px solid gold;
+      border-radius: 10px;
+      object-fit: cover;
+    }
 
-        nav ul li a {
-            text-decoration: none;
-            font-size: 24px;
-            color: white;
-            padding: 10px 20px;
-            transition: all 0.3s ease;
-        }
+    .about-content {
+      max-width: 500px;
+    }
 
-        nav ul li a:hover {
-            color: #d1009d;
-            box-shadow: 0 5px 15px rgba(212, 0, 166, 0.5);
-            transform: translateY(-5px);
-        }
+    .about-content h2 {
+      font-size: 36px;
+      margin-bottom: 15px;
+      color: white;
+    }
 
-        main {
-            margin-top: 150px;
-            padding: 20px;
-            text-align: center;
-        }
+    .about-content h3 {
+      font-size: 20px;
+      margin-bottom: 15px;
+      color: white;
+    }
 
-        .about-container {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: left;
-            color: #ddd;
-        }
+    .about-content h3 span {
+      color: gold;
+    }
 
-        .about-container h2 {
-            font-size: 36px;
-            color: #00bcd4;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .about-container p {
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
-
-        footer {
-            margin-top: 50px;
-            text-align: center;
-            font-size: 14px;
-            color: #777;
-        }
-    </style>
+    .about-content p {
+      font-size: 16px;
+      color: #ddd;
+    }
+  </style>
 </head>
 <body>
-    <img src="images/bg.gif" alt="Background" class="background-img">
-
-    <header>
-        <div class="header-left">
-            <span class="name"><span>C</span>edrick 
-        </div>
-        
-        <div class="menu-toggle" onclick="toggleMenu()">&#9776;</div>
-    </header>
-
-    <nav id="navbar">
-        <ul>
-            <li><a href="home.htm">Home</a></li>
-            <li><a href="project.htm">Project</a></li>
-            <li><a href="contact.htm">Contact</a></li>
-            <li><a href="about.htm">About</a></li>
-        </ul>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="home.htm">Home</a></li>
+        <li><a href="about.htm">About</a></li>
+      </ul>
     </nav>
+  </header>
 
-    <main>
-        <div class="about-container">
-            <h2>About</h2>
-            <p>Hi, I’m Cedrick Garcia, an Information Systems student driven by a passion for technology and its impact on modern business processes. My academic journey has allowed me to delve deep into areas like database management, system analysis, and software development. Beyond coursework, I enjoy exploring innovative tools and techniques that improve efficiency and collaboration in various industries.</p>
-            <p>When I’m not coding or solving system-related challenges, you’ll find me staying updated on the latest trends in tech or working on personal projects. My goal is to bridge the gap between technology and people, ensuring that the systems I design are both user-friendly and powerful enough to drive progress. Thank you for visiting my page, and I look forward to sharing more about my journey!</p>
-        </div>
-    </main>
+  <section class="about-section">
+    <div class="about-img animate__animated animate__fadeInLeft">
+      <img src="images/myface.jpg" alt="Cedrick Garcia">
+    </div>
+    <div class="about-content animate__animated animate__fadeInRight">
+      <h2>About Me</h2>
+      <h3>Hello, I am <span>Cedrick Garcia</span></h3>
+      <p>
+        Hi, I’m Cedrick Garcia, an Information Systems student passionate about technology, 
+        system analysis, and modern digital solutions. I enjoy creating efficient, 
+        user-friendly systems and exploring ways technology can make life better. 
+        Outside coding, I spend time learning new tools and working on personal projects.
+      </p>
+    </div>
+  </section>
 
-    <script>
-        function toggleMenu() {
-            const navbar = document.getElementById('navbar');
-            navbar.classList.toggle('open');
-        }
-    </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

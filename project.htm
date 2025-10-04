@@ -1,359 +1,358 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cedrick Garcia - Projects</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cedrick Garcia - Projects</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body {
-            font-family: cursive, sans-serif;
-            background-color: #1e1e2f;
-            color: white;
-            line-height: 1.6;
-            padding: 20px;
-        }
+    body {
+      font-family: cursive, sans-serif;
+      background-color: #000;
+      color: white;
+      line-height: 1.6;
+      padding: 20px;
+    }
 
-        /* Background Image */
-        .background-img {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            object-fit: cover;
-        }
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 15px 40px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      z-index: 1002;
+      background-color: rgba(0,0,0,0.95);
+      backdrop-filter: blur(6px);
+    }
 
-        /* Fixed Navbar */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1002;
-            background-color: rgba(0, 0, 0, 0.6);
-        }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
 
-        .header-left {
-            font-family: 'Dancing Script', cursive;
-            font-size: 30px;
-            color: white;
-            letter-spacing: 2px;
-        }
+    nav ul li a {
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: 500;
+      color: white;
+      position: relative;
+      transition: color 0.3s ease;
+    }
 
-        .header-left .name {
-            color: #ffffff;
-        }
+    nav ul li a::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: yellow;
+      box-shadow: 0 0 8px yellow;
+      transition: width 0.3s ease;
+    }
 
-        .header-left .name span {
-            color: #5f2e00;
-        }
+    nav ul li a:hover {
+      color: yellow;
+    }
 
-        .menu-toggle {
-            display: flex;
-            justify-content: space-between;
-            flex-direction: column;
-            align-items: center;
-            width: 30px;
-            height: 20px;
-            cursor: pointer;
-            z-index: 1003;
-            transition: transform 0.3s ease;
-        }
+    nav ul li a:hover::after {
+      width: 100%;
+    }
 
-        .menu-toggle span {
-            display: block;
-            width: 100%;
-            height: 4px;
-            background-color: white;
-            transition: transform 0.3s ease, opacity 0.3s ease;
-        }
+    /* Back Button */
+    .back-btn {
+      position: fixed;
+      top: 80px; /* just below header */
+      left: 30px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+      border: 2px solid white;
+      padding: 8px 15px;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      z-index: 1100;
+    }
 
-        .menu-toggle.open {
-            transform: rotate(45deg);
-        }
+    .back-btn:hover {
+      color: black;
+      background: yellow;
+      border-color: yellow;
+      box-shadow: 0 0 12px yellow;
+    }
 
-        .menu-toggle.open span:nth-child(1) {
-            transform: translateY(6px) rotate(45deg);
-        }
+    main {
+      margin-top: 160px; /* push down for header + back button */
+    }
 
-        .menu-toggle.open span:nth-child(2) {
-            opacity: 0;
-        }
+    .filter-menu {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
 
-        .menu-toggle.open span:nth-child(3) {
-            transform: translateY(-6px) rotate(-45deg);
-        }
+    .filter-menu button {
+      padding: 10px 20px;
+      background-color: #222;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
 
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            transform: translateY(-100%);
-            transition: transform 0.5s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 1001;
-        }
+    .filter-menu button:hover {
+      background-color: gold;
+      color: black;
+      transform: translateY(-3px);
+    }
 
-        nav.open {
-            transform: translateY(0);
-        }
+    .project-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-top: 20px;
+    }
 
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-        }
+    .project-box {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      background-color: #111;
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-        nav ul li {
-            margin: 15px 0;
-        }
+    .project-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(255, 215, 0, 0.6);
+    }
 
-        nav ul li a {
-            text-decoration: none;
-            font-size: 24px;
-            color: white;
-            padding: 10px 20px;
-            transition: all 0.3s ease;
-        }
+    .project-title, .project-text {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      color: gold;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
 
-        nav ul li a:hover {
-            color: #d1009d;
-            box-shadow: 0 5px 15px rgba(221, 2, 192, 0.5);
-            transform: translateY(-5px);
-        }
+    .project-title {
+      top: 10px;
+      font-size: 24px;
+      font-weight: bold;
+    }
 
-        /* Main content */
-        main {
-            margin-top: 120px;
-        }
+    .project-text {
+      bottom: 10px;
+      font-size: 18px;
+    }
 
-        .filter-menu {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
+    .project-box:hover .project-title, 
+    .project-box:hover .project-text {
+      opacity: 1;
+    }
 
-        .filter-menu button {
-            padding: 10px 20px;
-            background-color: #444;
-            border: none;
-            border-radius: 5px;
-            color: white;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
+    .github-icon {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 20px;
+      color: white;
+      transition: color 0.3s ease;
+    }
 
-        .filter-menu button:hover {
-            background-color: #623aa2;
-        }
+    .github-icon:hover {
+      color: gold;
+    }
 
-        .project-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding-top: 20px; /* Give some padding at the top */
-        }
+    .hidden {
+      display: none;
+    }
 
-        .project-box {
-            position: relative;
-            width: 100%;
-            height: 400px;
-            background-color: #444;
-            border-radius: 10px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+    }
 
-        .project-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(128, 0, 128, 0.7);
-        }
+    .modal-content {
+      background: #111;
+      color: white;
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 600px;
+      text-align: center;
+      position: relative;
+      animation: fadeIn 0.4s ease;
+    }
 
-        .project-title, .project-text {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            color: rgb(189, 0, 189);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
+    .modal h2 {
+      color: gold;
+      margin-bottom: 15px;
+    }
 
-        .project-title {
-            top: 10px;
-            font-size: 24px;
-            font-weight: bold;
-        }
+    .modal p {
+      margin-bottom: 20px;
+      color: #ccc;
+    }
 
-        .project-text {
-            bottom: 10px;
-            font-size: 18px;
-        }
+    .modal button {
+      padding: 10px 20px;
+      border: 2px solid gold;
+      background: transparent;
+      color: gold;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
 
-        .project-box:hover .project-title, .project-box:hover .project-text {
-            opacity: 1;
-        }
+    .modal button:hover {
+      background: gold;
+      color: black;
+    }
 
-        .github-icon {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 20px;
-            color: white;
-            transition: color 0.3s ease;
-        }
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 20px;
+      cursor: pointer;
+      color: white;
+    }
 
-        .github-icon:hover {
-            color: #00bcd4;
-        }
-
-        /* Hide project boxes that are not selected by category */
-        .graphic,  .programming {
-            display: block; /* By default, show all projects */
-        }
-
-        .hidden {
-            display: none;
-        }
-    </style>
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(-20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
 </head>
 <body>
-    <!-- Background Image -->
-    <img src="images/bg.gif" alt="Background" class="background-img">
-
-    <header>
-        <!-- Left side: Fancy Name -->
-        <div class="header-left">
-            <span class="name"><span>C</span>edrick </span> 
-        </div>
-        
-        <!-- Right side: Menu Toggle -->
-        <div class="menu-toggle" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </header>
-
-    <!-- Navigation -->
-    <nav id="navbar">
-        <ul>
-            <li><a href="home.htm">Home</a></li>
-            <li><a href="project.htm">Projects</a></li>
-            <li><a href="contact.htm">Contact</a></li>
-            <li><a href="about.htm">About</a></li>
-        </ul>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="home.htm">Home</a></li>
+        <li><a href="about.htm">About</a></li>
+      </ul>
     </nav>
+  </header>
 
-    <main>
-        <div class="filter-menu">
-            <button onclick="filterProjects('all')">All</button>
-            <button onclick="filterProjects('graphic')">Graphic Designing</button>
-            <button onclick="filterProjects('3d')">3D Modeling</button>
-            <button onclick="filterProjects('programming')">Programming</button>
-        </div>
+  <!-- Back Button -->
+  <a href="home.htm" class="back-btn"><i class="fas fa-arrow-left"></i> Back</a>
 
-        <div class="project-container">
-            <!-- Graphic Projects -->
-            <div class="project-box graphic">
-                <img src="images/graphic1.jpg" alt="Graphic Design 1" style="width: 100%; height: 100%; object-fit: cover;">
-                <div class="project-title">Design</div>
-                <div class="project-text"></div>
-                <div class="github-icon" onclick="redirectTo('https://github.com/graphic1')">🔗</div>
-            </div>
-            <div class="project-box graphic">
-                <img src="images/graphic2.jpg" alt="Graphic Design 2" style="width: 100%; height: 100%; object-fit: cover;">
-                <div class="project-title">Design</div>
-                <div class="project-text"></div>
-                <div class="github-icon" onclick="redirectTo('https://github.com/graphic2')">🔗</div>
-            </div>
-        
-            <!-- 3D Projects -->
-            <div class="project-box 3d">
-                <img src="images/3dmodeling2.jpg" alt="3D Modeling" style="width: 100%; height: 100%; object-fit: cover;">
-                <div class="project-title">3D Model</div>
-                <div class="project-text"></div>
-                <div class="github-icon" onclick="redirectTo('https://github.com/3dmodel1')">🔗</div>
-            </div>
-            <div class="project-box 3d">
-                <img src="images/3dmodeling1.jpg" alt="3D Model 2" style="width: 100%; height: 100%; object-fit: cover;">
-                <div class="project-title">3D Model</div>
-                <div class="project-text"></div>
-                <div class="github-icon" onclick="redirectTo('https://github.com/3dmodel2')">🔗</div>
-            </div>
-        
-            <!-- Programming Projects -->
-            <div class="project-box programming">
-                <img src="images/p1.jpg" alt="Programming Project" style="width: 100%; height: 100%; object-fit: cover;">
-                <div class="project-title">Programming</div>
-                <div class="project-text"></div>
-                <div class="github-icon" onclick="redirectTo('https://github.com/programming1')">🔗</div>
-            </div>
-            <div class="project-box programming">
-                <img src="images/p2.jpg" alt="Programming Project 2" style="width: 100%; height: 100%; object-fit: cover;">
-                <div class="project-title">Programming  </div>
-                <div class="project-text"></div>
-                <div class="github-icon" onclick="redirectTo('https://github.com/programming2')">🔗</div>
-            </div>
-            <div class="project-box programming">
-                <img src="images/p3.jpg" alt="Programming Project 3" style="width: 100%; height: 100%; object-fit: cover;">
-                <div class="project-title">Programming  </div>
-                <div class="project-text"></div>
-                <div class="github-icon" onclick="redirectTo('https://github.com/programming3')">🔗</div>
-            </div>
-            <div class="project-box programming">
-                <img src="images/p4.jpg" alt="Programming Project 4" style="width: 100%; height: 100%; object-fit: cover;">
-                <div class="project-title">Programming </div>
-                <div class="project-text"></div>
-                <div class="github-icon" onclick="redirectTo('https://github.com/programming4')">🔗</div>
-            </div>
-        </div>
-        </main>
-        
-        <script>
-            function toggleMenu() {
-                const navbar = document.getElementById('navbar');
-                const menuToggle = document.querySelector('.menu-toggle');
-                navbar.classList.toggle('open');
-                menuToggle.classList.toggle('open');
-            }
-        
-            function filterProjects(category) {
-                const projects = document.querySelectorAll('.project-box');
-                projects.forEach(project => {
-                    if (category === 'all' || project.classList.contains(category)) {
-                        project.classList.remove('hidden');
-                    } else {
-                        project.classList.add('hidden');
-                    }
-                });
-            }
-        
-            function redirectTo(url) {
-                window.open(url, '_blank');
-            }
-        </script>
-        </body>
-        </html>
-        
+  <main>
+    <div class="filter-menu">
+      <button onclick="filterProjects('all')">All</button>
+      <button onclick="filterProjects('graphic')">Graphic Designing</button>
+      <button onclick="filterProjects('3d')">3D Modeling</button>
+      <button onclick="filterProjects('programming')">Programming</button>
+    </div>
+
+    <div class="project-container">
+      <div class="project-box graphic" onclick="openModal('Graphic Design 1')">
+        <img src="images/graphic1.jpg" alt="Graphic Design 1" style="width: 100%; height: 100%; object-fit: cover;">
+        <div class="project-title">Design</div>
+        <div class="github-icon" onclick="event.stopPropagation(); redirectTo('https://github.com/graphic1')">🔗</div>
+      </div>
+      <div class="project-box graphic" onclick="openModal('Graphic Design 2')">
+        <img src="images/graphic2.jpg" alt="Graphic Design 2" style="width: 100%; height: 100%; object-fit: cover;">
+        <div class="project-title">Design</div>
+        <div class="github-icon" onclick="event.stopPropagation(); redirectTo('https://github.com/graphic2')">🔗</div>
+      </div>
+
+      <div class="project-box 3d" onclick="openModal('3D Model 1')">
+        <img src="images/3dmodeling2.jpg" alt="3D Modeling" style="width: 100%; height: 100%; object-fit: cover;">
+        <div class="project-title">3D Model</div>
+        <div class="github-icon" onclick="event.stopPropagation(); redirectTo('https://github.com/3dmodel1')">🔗</div>
+      </div>
+      <div class="project-box 3d" onclick="openModal('3D Model 2')">
+        <img src="images/3dmodeling1.jpg" alt="3D Modeling 2" style="width: 100%; height: 100%; object-fit: cover;">
+        <div class="project-title">3D Model</div>
+        <div class="github-icon" onclick="event.stopPropagation(); redirectTo('https://github.com/3dmodel2')">🔗</div>
+      </div>
+
+      <div class="project-box programming" onclick="openModal('Programming Project 1')">
+        <img src="images/p1.jpg" alt="Programming Project" style="width: 100%; height: 100%; object-fit: cover;">
+        <div class="project-title">Programming</div>
+        <div class="github-icon" onclick="event.stopPropagation(); redirectTo('https://github.com/programming1')">🔗</div>
+      </div>
+      <div class="project-box programming" onclick="openModal('Programming Project 2')">
+        <img src="images/p2.jpg" alt="Programming Project 2" style="width: 100%; height: 100%; object-fit: cover;">
+        <div class="project-title">Programming</div>
+        <div class="github-icon" onclick="event.stopPropagation(); redirectTo('https://github.com/programming2')">🔗</div>
+      </div>
+    </div>
+  </main>
+
+  <div class="modal" id="projectModal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <h2 id="modalTitle"></h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, nisi vel consectetur interdum, nisl nisi aliquet nunc, non commodo nisl nunc vel eros.</p>
+      <button>View Project</button>
+    </div>
+  </div>
+
+  <script>
+    function filterProjects(category) {
+      const projects = document.querySelectorAll('.project-box');
+      projects.forEach(project => {
+        if (category === 'all' || project.classList.contains(category)) {
+          project.classList.remove('hidden');
+        } else {
+          project.classList.add('hidden');
+        }
+      });
+    }
+
+    function redirectTo(url) {
+      window.open(url, '_blank');
+    }
+
+    function openModal(title) {
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('projectModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('projectModal').style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById('projectModal');
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>
