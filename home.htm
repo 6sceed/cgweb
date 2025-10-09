@@ -26,25 +26,31 @@
     /* --- Background --- */
     spline-viewer {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
+      top: 10%;
+      left: 10%;
+      width: 80vw;
+      height: 80vh;
       display: block;
       z-index: 0;
       opacity: 1;
+      border-radius: 20px;
+      overflow: hidden;
       transition: opacity 0.6s ease;
     }
 
-    .watermark-cover {
-      position: fixed;
-      bottom: 0;
-      right: 0;
-      width: 160px;
-      height: 70px;
-      background: black;
-      z-index: 5;
-    }
+ .watermark-cover {
+  position: fixed;
+  top: 835px;       
+  bottom: 10%;
+  right: 10%;
+  width: 157px;
+  height: 40px;
+  background: rgb(0, 0, 0);
+  z-index: 5;
+  border-radius: 12px;
+}
+
+
 
     /* --- Logo --- */
     .logo {
@@ -142,6 +148,14 @@
       }
       .intro p {
         font-size: 0.9rem;
+      }
+
+      /* make background still look good on mobile */
+      spline-viewer {
+        top: 5%;
+        left: 5%;
+        width: 90vw;
+        height: 60vh;
       }
     }
   </style>
