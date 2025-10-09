@@ -8,51 +8,19 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-  <!-- Spline -->
-  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.64/build/spline-viewer.js"></script>
-
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     html, body {
       height: 100%;
       width: 100%;
-      background: #000;
+      background: url('images/darkbg.jpg') center center / cover no-repeat;
       font-family: 'Poppins', sans-serif;
       color: white;
       overflow-x: hidden;
+      position: relative;
     }
 
-    /* --- Background --- */
-    spline-viewer {
-      position: fixed;
-      top: 10%;
-      left: 10%;
-      width: 80vw;
-      height: 80vh;
-      display: block;
-      z-index: 0;
-      opacity: 1;
-      border-radius: 20px;
-      overflow: hidden;
-      transition: opacity 0.6s ease;
-    }
-
- .watermark-cover {
-  position: fixed;
-  top: 835px;       
-  bottom: 10%;
-  right: 10%;
-  width: 157px;
-  height: 40px;
-  background: rgb(0, 0, 0);
-  z-index: 5;
-  border-radius: 12px;
-}
-
-
-
-    /* --- Logo --- */
     .logo {
       position: fixed;
       top: 25px;
@@ -78,7 +46,6 @@
       box-shadow: 0 0 10px rgba(255,255,255,0.3);
     }
 
-    /* --- Menu Icon --- */
     .menu-btn {
       position: fixed;
       top: 30px;
@@ -114,7 +81,6 @@
       background-color: white;
     }
 
-    /* --- Main Text --- */
     main {
       position: absolute;
       top: 50%;
@@ -125,61 +91,116 @@
       width: 90%;
     }
 
-    .intro h1 {
+    /* GLITCH (white-only) */
+    .glitch {
+      position: relative;
+      display: inline-block;
       font-size: 4.5rem;
       font-weight: 400;
-      letter-spacing: 0.6rem;
       text-transform: uppercase;
-      margin-bottom: 1.2rem;
-      color: white;
+      color: #fff;
+      letter-spacing: 0.6rem;
+      animation: glitch 2s infinite;
     }
 
-    .intro p {
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      color: #fff;
+      background: transparent;
+      clip-path: inset(0 0 0 0);
+    }
+
+    .glitch::before {
+      animation: glitchTop 2s infinite;
+      opacity: 0.9;
+    }
+
+    .glitch::after {
+      animation: glitchBottom 2s infinite;
+      opacity: 0.9;
+    }
+
+    @keyframes glitch {
+      0% { transform: none; }
+      20% { transform: skew(0.3deg, 0.3deg); }
+      40% { transform: translateX(-2px); }
+      60% { transform: translateX(2px); }
+      80% { transform: translateY(-1px); }
+      100% { transform: none; }
+    }
+
+    @keyframes glitchTop {
+      0% { clip-path: inset(0 0 90% 0); transform: translateX(0); }
+      10% { clip-path: inset(10% 0 80% 0); transform: translateX(-2px); }
+      20% { clip-path: inset(20% 0 60% 0); transform: translateX(2px); }
+      30% { clip-path: inset(30% 0 50% 0); transform: translateX(-1px); }
+      40%, 100% { clip-path: inset(0 0 0 0); transform: none; }
+    }
+
+    @keyframes glitchBottom {
+      0% { clip-path: inset(90% 0 0 0); transform: translateX(0); }
+      10% { clip-path: inset(80% 0 10% 0); transform: translateX(1px); }
+      20% { clip-path: inset(60% 0 30% 0); transform: translateX(-2px); }
+      30% { clip-path: inset(50% 0 40% 0); transform: translateX(2px); }
+      40%, 100% { clip-path: inset(0 0 0 0); transform: none; }
+    }
+
+    /* wrapper that keeps the tagline anchored to the bottom of the name */
+    .title-wrap {
+      position: relative;
+      display: inline-block; /* keeps it centered by the parent's text-align */
+    }
+
+    /* put <p> exactly at the bottom of the H1 (attached) */
+    .title-wrap .tagline {
+      position: absolute;
+      top: 100%;               /* bottom of the H1 */
+      left: 3%;
+      transform: translateX(-50%);
+      margin: 0;
       font-size: 1rem;
-      color: #7e7e7e; 
+      color: #636363;
       letter-spacing: 0.4px;
       font-weight: 400;
+      opacity: 0.95;
+      animation: glitch 2s infinite;
+      display: inline-block;
+      /* small gap; if you want it flush, set top: 100% and remove translateY */
+      margin-top: 8px;
     }
 
     @media (max-width: 768px) {
-      .intro h1 {
+      .glitch {
         font-size: 2.8rem;
         letter-spacing: 0.3rem;
       }
-      .intro p {
+      .title-wrap .tagline {
         font-size: 0.9rem;
-      }
-
-      /* make background still look good on mobile */
-      spline-viewer {
-        top: 5%;
-        left: 5%;
-        width: 90vw;
-        height: 60vh;
+        margin-top: 6px;
       }
     }
   </style>
 </head>
 
 <body>
-  <!-- Spline Background -->
-  <spline-viewer url="https://prod.spline.design/KdhmMbzqxPVJX5v3/scene.splinecode"></spline-viewer>
-  <div class="watermark-cover"></div>
-
-  <!-- Logo -->
   <div class="logo" onclick="window.location.href='home.htm'">C</div>
 
-  <!-- Menu Icon -->
   <div class="menu-btn" onclick="window.location.href='menu.html'">
     <div class="menu-line"></div>
     <div class="menu-line"></div>
   </div>
 
-  <!-- Main Content -->
   <main>
     <div class="intro">
-      <h1>CEDRICK GARCIA</h1>
-      <p>The world hasn't ended yet.</p>
+      <div class="title-wrap">
+        <h1 class="glitch" data-text="CEDRICK GARCIA">CEDRICK GARCIA</h1>
+        <p class="glitch tagline" data-text="The world hasn't ended yet.">The world hasn't ended yet.</p>
+      </div>
     </div>
   </main>
 </body>
