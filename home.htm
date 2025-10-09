@@ -6,12 +6,9 @@
   <title>Cedrick Garcia - Web Developer</title>
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Spline script -->
+  <!-- Spline -->
   <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.64/build/spline-viewer.js"></script>
 
   <style>
@@ -19,14 +16,14 @@
 
     html, body {
       height: 100%;
-      background: black;
+      width: 100%;
+      background: #000;
       font-family: 'Poppins', sans-serif;
       color: white;
-      line-height: 1.6;
       overflow-x: hidden;
     }
 
-    /* Background Spline */
+    /* --- Background --- */
     spline-viewer {
       position: fixed;
       top: 0;
@@ -34,6 +31,9 @@
       width: 100vw;
       height: 100vh;
       display: block;
+      z-index: 0;
+      opacity: 1;
+      transition: opacity 0.6s ease;
     }
 
     .watermark-cover {
@@ -46,178 +46,127 @@
       z-index: 5;
     }
 
-    /* Header */
-    header {
+    /* --- Logo --- */
+    .logo {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      padding: 15px 40px;
+      top: 25px;
+      left: 25px;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 2px solid white;
+      background: rgba(0,0,0,0.4);
       display: flex;
-      justify-content: flex-end;
       align-items: center;
-      z-index: 10;
-      background-color: rgba(0, 0, 0, 0.8);
-      backdrop-filter: blur(6px);
-    }
-
-    nav {
-      display: flex;
-      gap: 30px;
-    }
-
-    nav a {
-      text-decoration: none;
+      justify-content: center;
+      font-weight: 700;
       font-size: 1.1rem;
-      font-weight: 600;
-      color: white;
-      position: relative;
-      transition: all 0.3s ease;
+      cursor: pointer;
+      z-index: 10;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      backdrop-filter: blur(4px);
     }
 
-    nav a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -5px;
-      width: 0;
-      height: 2px;
-      background: yellow;
-      box-shadow: 0 0 8px yellow;
-      transition: width 0.3s ease;
+    .logo:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 10px rgba(255,255,255,0.3);
     }
 
-    nav a:hover {
-      color: yellow;
+    /* --- Menu Icon --- */
+    .menu-btn {
+      position: fixed;
+      top: 30px;
+      right: 35px;
+      width: 26px;
+      height: 18px;
+      cursor: pointer;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.3s ease;
     }
 
-    nav a:hover::after {
+    .menu-btn:hover {
+      transform: scale(1.05);
+    }
+
+    .menu-line {
       width: 100%;
+      height: 2px;
+      background-color: white;
+      border-radius: 2px;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    /* Main intro */
+    .menu-btn:hover .menu-line {
+      transform: translateX(3px);
+      background-color: #ddd;
+    }
+
+    .menu-btn:active .menu-line {
+      background-color: white;
+    }
+
+    /* --- Main Text --- */
     main {
-      margin-top: 160px;
-      padding: 20px;
-      text-align: left;
-      position: relative;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
       z-index: 1;
-      max-width: 700px;
-      margin-left: 60px;
+      width: 90%;
     }
 
     .intro h1 {
-      font-size: 3.5rem;
-      font-weight: 700;
+      font-size: 4.5rem;
+      font-weight: 400;
+      letter-spacing: 0.6rem;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
       color: white;
-      margin-bottom: 20px;
-      opacity: 0;
-      animation: fadeSlideDown 1s ease forwards;
-    }
-
-    .intro h1 span {
-      color: white;
-      transition: color 0.3s ease, text-shadow 0.3s ease;
-    }
-
-    .intro h1 span:hover {
-      color: yellow;
-      text-shadow: 0 0 15px yellow;
     }
 
     .intro p {
-      font-size: 1.2rem;
-      color: #cccccc;
-      margin-bottom: 30px;
-      line-height: 1.8;
-      opacity: 0;
-      animation: fadeSlideUp 1.2s ease forwards;
-      animation-delay: 0.5s;
-    }
-
-    .buttons {
-      display: flex;
-      gap: 20px;
-      opacity: 0;
-      animation: fadeSlideUp 1.2s ease forwards;
-      animation-delay: 1s;
-    }
-
-    .btn {
-      padding: 12px 24px;
-      border-radius: 6px;
       font-size: 1rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.3s ease;
+      color: #7e7e7e; 
+      letter-spacing: 0.4px;
+      font-weight: 400;
     }
 
-    .btn-primary {
-      background: white;
-      color: black;
-    }
-
-    .btn-primary:hover {
-      background: yellow;
-      box-shadow: 0 0 12px yellow;
-      color: black;
-    }
-
-    .btn-outline {
-      border: 2px solid white;
-      color: white;
-      background: transparent;
-    }
-
-    .btn-outline:hover {
-      background: yellow;
-      border-color: yellow;
-      color: black;
-      box-shadow: 0 0 12px yellow;
-    }
-
-    /* Animations */
-    @keyframes fadeSlideDown {
-      0% { opacity: 0; transform: translateY(-40px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeSlideUp {
-      0% { opacity: 0; transform: translateY(40px); }
-      100% { opacity: 1; transform: translateY(0); }
+    @media (max-width: 768px) {
+      .intro h1 {
+        font-size: 2.8rem;
+        letter-spacing: 0.3rem;
+      }
+      .intro p {
+        font-size: 0.9rem;
+      }
     }
   </style>
 </head>
-<body>
 
-  <!-- Background Spline -->
+<body>
+  <!-- Spline Background -->
   <spline-viewer url="https://prod.spline.design/KdhmMbzqxPVJX5v3/scene.splinecode"></spline-viewer>
   <div class="watermark-cover"></div>
 
-  <!-- Header -->
-  <header>
-    <nav>
-      <a href="home.htm">Home</a>
-      <a href="about.htm">About</a>
-    </nav>
-  </header>
+  <!-- Logo -->
+  <div class="logo" onclick="window.location.href='home.htm'">C</div>
 
-  <!-- Main Intro -->
+  <!-- Menu Icon -->
+  <div class="menu-btn" onclick="window.location.href='menu.html'">
+    <div class="menu-line"></div>
+    <div class="menu-line"></div>
+  </div>
+
+  <!-- Main Content -->
   <main>
     <div class="intro">
-      <h1>Hello, <span>I’m Ced</span></h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur. At libero sit nec tincidunt eu at semper. 
-        Phasellus lorem laoreet amet sem imperdiet.  
-      </p>
-      <div class="buttons">
-        <a href="contact.htm" class="btn btn-primary">Get in Touch</a>
-        <a href="project.htm" class="btn btn-outline">View All Works</a>
-      </div>
+      <h1>CEDRICK GARCIA</h1>
+      <p>The world hasn't ended yet.</p>
     </div>
   </main>
-
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

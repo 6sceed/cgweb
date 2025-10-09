@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cedrick Menu</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html, body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-color: #0f0f0f;
+    font-family: "Space Mono", monospace;
+    color: white;
+    will-change: transform;
+  }
+
+  .menu {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    width: 100%;
+    height: 100vh;
+    transform-style: preserve-3d;
+    will-change: transform;
+  }
+
+  .menu-item {
+    background: #181818;
+    border: 1px solid #222;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    cursor: pointer;
+    font-size: clamp(1.4rem, 2vw, 2.4rem);
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: relative;
+    padding: 35px 45px;
+    will-change: transform, box-shadow;
+    transform-style: preserve-3d;
+    transition: box-shadow 0.4s ease;
+  }
+
+  .projects { grid-column: 1 / 3; grid-row: 1; background: #151515; }
+  .about { grid-column: 3; grid-row: 1 / 3; background: #191919; }
+  .contact { grid-column: 1 / 3; grid-row: 2; background: #202020; }
+
+  .menu-item:hover {
+    box-shadow: 0 15px 35px rgba(255, 255, 255, 0.15);
+  }
+
+  .logo {
+    position: fixed;
+    top: 25px;
+    left: 25px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #111;
+    border: 2px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    z-index: 1000;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .logo:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  }
+
+  .close-btn {
+    position: fixed;
+    top: 20px;
+    right: 25px;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    z-index: 1000;
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+
+  .close-btn:hover {
+    color: rgb(241, 241, 241);
+    transform: rotate(90deg);
+  }
+
+  @media (max-width: 768px) {
+    .menu {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .menu-item {
+      height: 33.33vh;
+      font-size: 1.2rem;
+      padding: 25px;
+    }
+  }
+</style>
+</head>
+
+<body>
+  <div class="logo" onclick="window.location.href='home.htm'">C</div>
+  <div class="close-btn" onclick="window.location.href='home.htm'">✕</div>
+
+  <div class="menu" id="menu">
+    <div class="menu-item projects" onclick="window.location.href='project.htm'">Projects</div>
+    <div class="menu-item about" onclick="window.location.href='about.htm'">About</div>
+    <div class="menu-item contact" onclick="window.location.href='contact.htm'">Contact</div>
+  </div>
+
+  <script>
+    const menu = document.getElementById('menu');
+    const items = document.querySelectorAll('.menu-item');
+
+    const camX = gsap.quickTo(menu, "x", { duration: 1, ease: "power3.out" });
+    const camY = gsap.quickTo(menu, "y", { duration: 1, ease: "power3.out" });
+    const camScale = gsap.quickTo(menu, "scale", { duration: 1, ease: "power3.out" });
+    const camRotX = gsap.quickTo(menu, "rotationX", { duration: 1, ease: "power3.out" });
+    const camRotY = gsap.quickTo(menu, "rotationY", { duration: 1, ease: "power3.out" });
+
+    items.forEach(item => {
+      item.addEventListener('mouseenter', () => {
+        const rect = item.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        const windowCenterX = window.innerWidth / 2;
+        const windowCenterY = window.innerHeight / 2;
+
+        const deltaX = (centerX - windowCenterX) * -0.09;
+        const deltaY = (centerY - windowCenterY) * -0.09;
+
+        camX(deltaX);
+        camY(deltaY);
+        camScale(1.05);
+        camRotX(gsap.utils.random(-3, 3));
+        camRotY(gsap.utils.random(-3, 3));
+
+        gsap.to(item, {
+          y: -15,
+          duration: 1.1,
+          ease: "power3.out",
+          force3D: true
+        });
+      });
+
+      item.addEventListener('mouseleave', () => {
+        camX(0);
+        camY(0);
+        camScale(1);
+        camRotX(0);
+        camRotY(0);
+        gsap.to(item, {
+          y: 0,
+          duration: 1.4,
+          ease: "elastic.out(1, 0.5)",
+          force3D: true
+        });
+      });
+    });
+
+    window.addEventListener('mouseleave', () => {
+      camX(0);
+      camY(0);
+      camScale(1);
+      camRotX(0);
+      camRotY(0);
+      gsap.to(".menu-item", {
+        y: 0,
+        duration: 1.4,
+        ease: "elastic.out(1, 0.5)",
+        force3D: true
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cedrick Garcia - Projects</title>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
   <style>
     * {
       margin: 0;
@@ -14,345 +16,240 @@
     }
 
     body {
-      font-family: cursive, sans-serif;
+      font-family: "Poppins", sans-serif;
       background-color: #000;
-      color: white;
+      color: #fff;
       line-height: 1.6;
-      padding: 20px;
+      overflow-x: hidden;
+      min-height: 100vh;
+      padding-top: 120px;
     }
 
-    header {
+    /* --- Logo --- */
+    .logo {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      padding: 15px 40px;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      z-index: 1002;
-      background-color: rgba(0,0,0,0.95);
-      backdrop-filter: blur(6px);
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 30px;
-    }
-
-    nav ul li a {
-      text-decoration: none;
-      font-size: 20px;
-      font-weight: 500;
-      color: white;
-      position: relative;
-      transition: color 0.3s ease;
-    }
-
-    nav ul li a::after {
-      content: "";
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 0%;
-      height: 2px;
-      background: yellow;
-      box-shadow: 0 0 8px yellow;
-      transition: width 0.3s ease;
-    }
-
-    nav ul li a:hover {
-      color: yellow;
-    }
-
-    nav ul li a:hover::after {
-      width: 100%;
-    }
-
-    /* Back Button */
-    .back-btn {
-      position: fixed;
-      top: 80px; /* just below header */
-      left: 30px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      text-decoration: none;
-      color: white;
-      font-weight: 600;
-      font-size: 1rem;
+      top: 25px;
+      left: 25px;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
       border: 2px solid white;
-      padding: 8px 15px;
-      border-radius: 5px;
-      transition: all 0.3s ease;
-      z-index: 1100;
-    }
-
-    .back-btn:hover {
-      color: black;
-      background: yellow;
-      border-color: yellow;
-      box-shadow: 0 0 12px yellow;
-    }
-
-    main {
-      margin-top: 160px; /* push down for header + back button */
-    }
-
-    .filter-menu {
+      background: rgba(0,0,0,0.4);
       display: flex;
+      align-items: center;
       justify-content: center;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-
-    .filter-menu button {
-      padding: 10px 20px;
-      background-color: #222;
-      border: none;
-      border-radius: 5px;
-      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
       cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.3s ease;
+      z-index: 10;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      backdrop-filter: blur(4px);
     }
 
-    .filter-menu button:hover {
-      background-color: gold;
-      color: black;
-      transform: translateY(-3px);
+    .logo:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+    }
+
+    /* --- Menu Icon --- */
+    .menu-btn {
+      position: fixed;
+      top: 30px;
+      right: 35px;
+      width: 28px;
+      height: 20px;
+      cursor: pointer;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.3s ease;
+    }
+
+    .menu-btn:hover {
+      transform: scale(1.05);
+    }
+
+    .menu-line {
+      width: 100%;
+      height: 2px;
+      background-color: white;
+      border-radius: 2px;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .menu-btn:hover .menu-line {
+      transform: translateX(3px);
+      background-color: #ccc;
+    }
+
+    /* --- Main --- */
+    main {
+      padding: 0 40px 60px;
     }
 
     .project-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      width: 100%;
-      max-width: 1200px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 35px;
+      max-width: 1400px;
       margin: 0 auto;
-      padding-top: 20px;
     }
 
-    .project-box {
-      position: relative;
-      width: 100%;
-      height: 400px;
-      background-color: #111;
-      border-radius: 10px;
+    /* --- Project Card --- */
+    .project-card {
+      background-color: #0a0a0a;
+      border: 2px solid #1a1a1a;
       overflow: hidden;
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: all 0.3s ease;
     }
 
-    .project-box:hover {
+    .project-card:hover {
+      border-color: #fff;
       transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(255, 215, 0, 0.6);
     }
 
-    .project-title, .project-text {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      color: gold;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .project-title {
-      top: 10px;
-      font-size: 24px;
-      font-weight: bold;
-    }
-
-    .project-text {
-      bottom: 10px;
-      font-size: 18px;
-    }
-
-    .project-box:hover .project-title, 
-    .project-box:hover .project-text {
-      opacity: 1;
-    }
-
-    .github-icon {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      font-size: 20px;
-      color: white;
-      transition: color 0.3s ease;
-    }
-
-    .github-icon:hover {
-      color: gold;
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 2000;
-      left: 0;
-      top: 0;
+    .project-card img {
       width: 100%;
-      height: 100%;
-      background-color: rgba(0,0,0,0.8);
-      justify-content: center;
-      align-items: center;
+      height: 220px;
+      object-fit: cover;
+      border-bottom: 2px solid #1a1a1a;
     }
 
-    .modal-content {
-      background: #111;
-      color: white;
-      padding: 30px;
-      border-radius: 10px;
-      max-width: 600px;
-      text-align: center;
-      position: relative;
-      animation: fadeIn 0.4s ease;
+    .project-content {
+      padding: 20px 18px 25px;
     }
 
-    .modal h2 {
-      color: gold;
-      margin-bottom: 15px;
-    }
-
-    .modal p {
-      margin-bottom: 20px;
-      color: #ccc;
-    }
-
-    .modal button {
-      padding: 10px 20px;
-      border: 2px solid gold;
-      background: transparent;
-      color: gold;
-      border-radius: 5px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .modal button:hover {
-      background: gold;
-      color: black;
-    }
-
-    .close-btn {
-      position: absolute;
-      top: 15px;
-      right: 20px;
+    .project-content h3 {
+      color: #fff;
       font-size: 20px;
-      cursor: pointer;
-      color: white;
+      margin-bottom: 12px;
+      border-left: 3px solid white;
+      padding-left: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
-    @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(-20px);}
-      to {opacity: 1; transform: translateY(0);}
+    .project-content p {
+      color: #aaa;
+      font-size: 15px;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tech-stack span {
+      background-color: #1a1a1a;
+      color: #ccc;
+      font-size: 13px;
+      padding: 6px 12px;
+      border: 1px solid #333;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      transition: all 0.3s ease;
+    }
+
+    .tech-stack span:hover {
+      background-color: #fff;
+      color: #000;
+    }
+
+    @media (max-width: 768px) {
+      .project-card img {
+        height: 180px;
+      }
+
+      .project-content h3 {
+        font-size: 18px;
+      }
     }
   </style>
 </head>
+
 <body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="home.htm">Home</a></li>
-        <li><a href="about.htm">About</a></li>
-      </ul>
-    </nav>
-  </header>
+  <!-- Logo -->
+  <div class="logo" onclick="window.location.href='home.htm'">C</div>
 
-  <!-- Back Button -->
-  <a href="home.htm" class="back-btn"><i class="fas fa-arrow-left"></i> Back</a>
-
-  <main>
-    <div class="filter-menu">
-      <button onclick="filterProjects('all')">All</button>
-      <button onclick="filterProjects('graphic')">Graphic Designing</button>
-      <button onclick="filterProjects('3d')">3D Modeling</button>
-      <button onclick="filterProjects('programming')">Programming</button>
-    </div>
-
-    <div class="project-container">
-      <div class="project-box graphic" onclick="openModal('Graphic Design 1')">
-        <img src="images/graphic1.jpg" alt="Graphic Design 1" style="width: 100%; height: 100%; object-fit: cover;">
-        <div class="project-title">Design</div>
-        <div class="github-icon" onclick="event.stopPropagation(); redirectTo('https://github.com/graphic1')">🔗</div>
-      </div>
-      <div class="project-box graphic" onclick="openModal('Graphic Design 2')">
-        <img src="images/graphic2.jpg" alt="Graphic Design 2" style="width: 100%; height: 100%; object-fit: cover;">
-        <div class="project-title">Design</div>
-        <div class="github-icon" onclick="event.stopPropagation(); redirectTo('https://github.com/graphic2')">🔗</div>
-      </div>
-
-      <div class="project-box 3d" onclick="openModal('3D Model 1')">
-        <img src="images/3dmodeling2.jpg" alt="3D Modeling" style="width: 100%; height: 100%; object-fit: cover;">
-        <div class="project-title">3D Model</div>
-        <div class="github-icon" onclick="event.stopPropagation(); redirectTo('https://github.com/3dmodel1')">🔗</div>
-      </div>
-      <div class="project-box 3d" onclick="openModal('3D Model 2')">
-        <img src="images/3dmodeling1.jpg" alt="3D Modeling 2" style="width: 100%; height: 100%; object-fit: cover;">
-        <div class="project-title">3D Model</div>
-        <div class="github-icon" onclick="event.stopPropagation(); redirectTo('https://github.com/3dmodel2')">🔗</div>
-      </div>
-
-      <div class="project-box programming" onclick="openModal('Programming Project 1')">
-        <img src="images/p1.jpg" alt="Programming Project" style="width: 100%; height: 100%; object-fit: cover;">
-        <div class="project-title">Programming</div>
-        <div class="github-icon" onclick="event.stopPropagation(); redirectTo('https://github.com/programming1')">🔗</div>
-      </div>
-      <div class="project-box programming" onclick="openModal('Programming Project 2')">
-        <img src="images/p2.jpg" alt="Programming Project 2" style="width: 100%; height: 100%; object-fit: cover;">
-        <div class="project-title">Programming</div>
-        <div class="github-icon" onclick="event.stopPropagation(); redirectTo('https://github.com/programming2')">🔗</div>
-      </div>
-    </div>
-  </main>
-
-  <div class="modal" id="projectModal">
-    <div class="modal-content">
-      <span class="close-btn" onclick="closeModal()">&times;</span>
-      <h2 id="modalTitle"></h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, nisi vel consectetur interdum, nisl nisi aliquet nunc, non commodo nisl nunc vel eros.</p>
-      <button>View Project</button>
-    </div>
+  <!-- Menu Icon -->
+  <div class="menu-btn" onclick="window.location.href='menu.html'">
+    <div class="menu-line"></div>
+    <div class="menu-line"></div>
   </div>
 
-  <script>
-    function filterProjects(category) {
-      const projects = document.querySelectorAll('.project-box');
-      projects.forEach(project => {
-        if (category === 'all' || project.classList.contains(category)) {
-          project.classList.remove('hidden');
-        } else {
-          project.classList.add('hidden');
-        }
-      });
-    }
+  <!-- Main Projects Section -->
+  <main>
+    <div class="project-container">
 
-    function redirectTo(url) {
-      window.open(url, '_blank');
-    }
+      <div class="project-card">
+        <img src="images/p1.jpg" alt="Project 1">
+        <div class="project-content">
+          <h3>Project 1</h3>
+          <p>This project demonstrates front-end design and responsive layout using HTML, CSS, and JavaScript.</p>
+          <div class="tech-stack">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+          </div>
+        </div>
+      </div>
 
-    function openModal(title) {
-      document.getElementById('modalTitle').innerText = title;
-      document.getElementById('projectModal').style.display = 'flex';
-    }
+      <div class="project-card">
+        <img src="images/p2.jpg" alt="Project 2">
+        <div class="project-content">
+          <h3>Project 2</h3>
+          <p>A creative and dynamic web app showcasing interactive components and clean UI implementation.</p>
+          <div class="tech-stack">
+            <span>React</span>
+            <span>Node.js</span>
+          </div>
+        </div>
+      </div>
 
-    function closeModal() {
-      document.getElementById('projectModal').style.display = 'none';
-    }
+      <div class="project-card">
+        <img src="images/p3.jpg" alt="Project 3">
+        <div class="project-content">
+          <h3>Project 3</h3>
+          <p>A full-stack project focused on data management, API integration, and smooth user experience.</p>
+          <div class="tech-stack">
+            <span>Express</span>
+            <span>MongoDB</span>
+            <span>JavaScript</span>
+          </div>
+        </div>
+      </div>
 
-    window.onclick = function(event) {
-      const modal = document.getElementById('projectModal');
-      if (event.target === modal) {
-        modal.style.display = "none";
-      }
-    }
-  </script>
+      <div class="project-card">
+        <img src="images/p4.jpg" alt="Project 4">
+        <div class="project-content">
+          <h3>Project 4</h3>
+          <p>This project highlights UI design principles with efficient responsive layouts and animation effects.</p>
+          <div class="tech-stack">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>Bootstrap</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="images/graphic1.jpg" alt="Project 5">
+        <div class="project-content">
+          <h3>Project 5</h3>
+          <p>A personal side project experimenting with back-end logic, database design, and deployment.</p>
+          <div class="tech-stack">
+            <span>Python</span>
+            <span>Flask</span>
+            <span>SQL</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
 </body>
 </html>
