@@ -83,90 +83,163 @@
       background-color: #ccc;
     }
 
-    /* --- Main --- */
+    /* --- Main Projects --- */
     main {
-      padding: 0 40px 60px;
+      padding: 0 30px 60px;
     }
 
     .project-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 35px;
-      max-width: 1400px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 25px;
+      max-width: 1200px;
       margin: 0 auto;
     }
 
-    /* --- Project Card --- */
     .project-card {
       background-color: #0a0a0a;
-      border: 2px solid #1a1a1a;
+      border: 1px solid #1a1a1a;
+      border-radius: 8px;
       overflow: hidden;
+      text-align: center;
+      cursor: pointer;
       transition: all 0.3s ease;
     }
 
     .project-card:hover {
       border-color: #fff;
-      transform: translateY(-5px);
+      transform: translateY(-3px);
     }
 
     .project-card img {
       width: 100%;
-      height: 220px;
-      object-fit: cover;
-      border-bottom: 2px solid #1a1a1a;
+      height: 160px;
+      object-fit: contain;
+      padding: 10px;
+      background: #000;
+      filter: grayscale(100%);
+      transition: all 0.3s ease;
+    }
+
+    .project-card:hover img {
+      filter: grayscale(0%);
+      transform: scale(1.02);
     }
 
     .project-content {
-      padding: 20px 18px 25px;
+      padding: 12px;
     }
 
     .project-content h3 {
-      color: #fff;
-      font-size: 20px;
-      margin-bottom: 12px;
-      border-left: 3px solid white;
-      padding-left: 10px;
+      font-size: 15px;
       text-transform: uppercase;
       letter-spacing: 0.5px;
+      margin-bottom: 6px;
+      color: #fff;
     }
 
     .project-content p {
+      font-size: 13px;
       color: #aaa;
-      font-size: 15px;
-      margin-bottom: 20px;
-      line-height: 1.5;
+      margin-bottom: 10px;
     }
 
     .tech-stack {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      justify-content: center;
+      gap: 5px;
     }
 
     .tech-stack span {
-      background-color: #1a1a1a;
+      background: #1a1a1a;
       color: #ccc;
-      font-size: 13px;
-      padding: 6px 12px;
+      font-size: 11px;
+      padding: 4px 8px;
       border: 1px solid #333;
+      border-radius: 3px;
       text-transform: uppercase;
-      letter-spacing: 0.3px;
       transition: all 0.3s ease;
     }
 
     .tech-stack span:hover {
-      background-color: #fff;
+      background: #fff;
       color: #000;
     }
 
-    @media (max-width: 768px) {
-      .project-card img {
-        height: 180px;
-      }
+    /* --- Modal --- */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 20;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255,255,255,0.1);
+      backdrop-filter: blur(4px);
+      justify-content: center;
+      align-items: center;
+    }
 
-      .project-content h3 {
-        font-size: 18px;
-      }
+    .modal-content {
+      background: #0a0a0a;
+      border: 1px solid #fff;
+      border-radius: 8px;
+      padding: 1.5rem;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      color: #fff;
+      animation: fadeIn 0.3s ease-in-out;
+      position: relative;
+    }
+
+    .modal-content h2 {
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+    }
+
+    .modal-content p {
+      color: #bbb;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .modal-content a {
+      display: inline-block;
+      margin-top: 1.2rem;
+      padding: 8px 18px;
+      background: #fff;
+      color: #000;
+      font-weight: 600;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .modal-content a:hover {
+      background: #ccc;
+    }
+
+    .close {
+      position: absolute;
+      right: 15px;
+      top: 10px;
+      font-size: 1.4rem;
+      cursor: pointer;
+      color: #fff;
+      transition: color 0.3s ease;
+    }
+
+    .close:hover {
+      color: #ccc;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
     }
   </style>
 </head>
@@ -185,71 +258,76 @@
   <main>
     <div class="project-container">
 
-      <div class="project-card">
-        <img src="images/p1.jpg" alt="Project 1">
+      
+      <div class="project-card" 
+           data-title="Anonymous Chatbox" 
+           data-description="A web app that lets users chat anonymously with Firebase for real-time messaging." 
+           data-link="https://github.com/6sceed/anonymous-chat">
+        <img src="images/project image/anonymous-chatbox/nickname page.png" alt="Anonymous Chatbox">
         <div class="project-content">
-          <h3>Project 1</h3>
-          <p>This project demonstrates front-end design and responsive layout using HTML, CSS, and JavaScript.</p>
+          <h3>Anonymous Chatbox</h3>
+          <p>A web app that allows users to chat anonymously.</p>
           <div class="tech-stack">
             <span>HTML</span>
             <span>CSS</span>
             <span>JavaScript</span>
+            <span>Firebase</span>
           </div>
         </div>
       </div>
 
-      <div class="project-card">
-        <img src="images/p2.jpg" alt="Project 2">
+      <div class="project-card" 
+           data-title="Project 2" 
+           data-description="we built a system KLDHMS (KLD Health Management System) for our school, since the booking system is paper based we made a system that Patients(students) can book a slot depending if they want a psychologist, nurse etc. we built this using javaswing with XAMPP as database. it has a login system, register system and admin can create doctors if anyone applied that is. we built this for a month lol (our first system as a first years)" 
+           data-link="https://github.com/6sceed/KLDHMS-V2">
+        <img src="images/project image/KLDMHS/homep.png" alt="KLD Health Management Systems">
         <div class="project-content">
-          <h3>Project 2</h3>
-          <p>A creative and dynamic web app showcasing interactive components and clean UI implementation.</p>
+          <h3>KLD Health Management Systems</h3>
+          <p>A system that can manage health-related appointments and records for students.</p>
           <div class="tech-stack">
-            <span>React</span>
-            <span>Node.js</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <img src="images/p3.jpg" alt="Project 3">
-        <div class="project-content">
-          <h3>Project 3</h3>
-          <p>A full-stack project focused on data management, API integration, and smooth user experience.</p>
-          <div class="tech-stack">
-            <span>Express</span>
-            <span>MongoDB</span>
-            <span>JavaScript</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <img src="images/p4.jpg" alt="Project 4">
-        <div class="project-content">
-          <h3>Project 4</h3>
-          <p>This project highlights UI design principles with efficient responsive layouts and animation effects.</p>
-          <div class="tech-stack">
-            <span>HTML</span>
-            <span>CSS</span>
-            <span>Bootstrap</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <img src="images/graphic1.jpg" alt="Project 5">
-        <div class="project-content">
-          <h3>Project 5</h3>
-          <p>A personal side project experimenting with back-end logic, database design, and deployment.</p>
-          <div class="tech-stack">
-            <span>Python</span>
-            <span>Flask</span>
-            <span>SQL</span>
+            <span>Java</span>
+            <span>MySQL</span>
           </div>
         </div>
       </div>
 
     </div>
+
+    <!-- Popup Modal -->
+    <div id="projectModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 id="modalTitle"></h2>
+        <p id="modalDescription"></p>
+        <a id="modalLink" href="#" target="_blank">Visit Project 🚀</a>
+      </div>
+    </div>
   </main>
+
+  <script>
+    const cards = document.querySelectorAll('.project-card');
+    const modal = document.getElementById('projectModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDescription = document.getElementById('modalDescription');
+    const modalLink = document.getElementById('modalLink');
+    const closeBtn = document.querySelector('.close');
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        modalTitle.textContent = card.dataset.title;
+        modalDescription.textContent = card.dataset.description;
+        modalLink.href = card.dataset.link;
+        modal.style.display = 'flex';
+      });
+    });
+
+    closeBtn.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) modal.style.display = 'none';
+    });
+  </script>
 </body>
 </html>
