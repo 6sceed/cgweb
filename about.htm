@@ -5,8 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About Me - Cedrick Garcia</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
     * {
@@ -17,11 +16,10 @@
 
     body {
       font-family: 'Poppins', sans-serif;
-       background: black;
+      background: #000;
       color: #fff;
       overflow-x: hidden;
-      min-height: 100vh;
-      padding-top: 120px;
+      line-height: 1.6;
     }
 
     /* --- LOGO --- */
@@ -82,79 +80,234 @@
       background-color: #ccc;
     }
 
-    /* --- SECTION STYLE --- */
+    /* --- MAIN CONTAINER --- */
     .about-container {
-      max-width: 800px;
+      max-width: 900px;
       margin: 0 auto;
-      padding: 0 20px 100px;
-      text-align: left;
-      animation: fadeInUp 1s ease-out;
+      padding: 100px 30px 80px;
     }
 
-    .about-title {
-      font-size: 2.8rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      margin-bottom: 15px;
+    .page-title {
+      font-size: 2.5rem;
+      font-weight: 300;
+      letter-spacing: 8px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      text-align: center;
     }
 
-    hr {
-      width: 100%;
-      border: none;
-      border-top: 2px solid white;
-      margin-bottom: 40px;
+    .title-line {
+      width: 60px;
+      height: 1px;
+      background: #fff;
+      margin: 0 auto 60px;
     }
 
-    .about-img {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 40px;
+    /* --- INTRO SECTION --- */
+    .intro-section {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 40px;
+      margin-bottom: 80px;
+      align-items: center;
     }
 
-    .about-img img {
-      width: 100%;
-      max-width: 300px;
-      border: 2px solid #222;
-      border-radius: 10px;
+    .profile-img {
+      width: 200px;
+      height: 200px;
+      border: 1px solid #333;
       object-fit: cover;
-      transition: transform 0.3s ease, border-color 0.3s ease;
+      filter: grayscale(100%);
+      transition: filter 0.4s ease;
     }
 
-    .about-img img:hover {
-      transform: scale(1.03);
+    .profile-img:hover {
+      filter: grayscale(0%);
+    }
+
+    .intro-text h2 {
+      font-size: 1.8rem;
+      font-weight: 400;
+      margin-bottom: 15px;
+      letter-spacing: 2px;
+    }
+
+    .intro-text p {
+      font-size: 0.95rem;
+      color: #aaa;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    /* --- SECTION HEADERS --- */
+    .section {
+      margin-bottom: 60px;
+    }
+
+    .section h3 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 25px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .section h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 1px;
+      background: #fff;
+    }
+
+    /* --- SKILLS GRID --- */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 15px;
+    }
+
+    .skill-item {
+      background: transparent;
+      border: 1px solid #222;
+      padding: 15px;
+      text-align: center;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      font-weight: 400;
+    }
+
+    .skill-item:hover {
+      background: #fff;
+      color: #000;
       border-color: #fff;
     }
 
-    .about-content h3 {
-      font-size: 1rem;
+    /* --- TOOLS GRID --- */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 12px;
+    }
+
+    .tool-item {
+      background: transparent;
+      border: 1px solid #222;
+      padding: 12px;
+      text-align: center;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      color: #888;
+      transition: all 0.3s ease;
       font-weight: 400;
+    }
+
+    .tool-item:hover {
+      background: #fff;
+      color: #000;
+      border-color: #fff;
+    }
+
+    /* --- MEDIA GRID (Movies/Series) --- */
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+    }
+
+    .media-item {
+      background: transparent;
+      border: 1px solid #222;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      position: relative;
+    }
+
+    .media-item:hover {
+      border-color: #fff;
+      transform: translateY(-5px);
+    }
+
+    .media-item img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      transition: all 0.4s ease;
+    }
+
+    .media-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .media-item-title {
+      padding: 12px;
+      text-align: center;
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+      color: #888;
+      text-transform: uppercase;
+      font-weight: 400;
+      border-top: 1px solid #222;
+      background: #000;
+    }
+
+    /* --- EXPERIENCE --- */
+    .experience-item {
+      margin-bottom: 30px;
+      padding-left: 20px;
+      border-left: 1px solid #333;
+    }
+
+    .experience-item h4 {
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      margin-bottom: 5px;
+    }
+
+    .experience-item .role {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 8px;
+      font-weight: 400;
+    }
+
+    .experience-item p {
+      font-size: 0.9rem;
       color: #aaa;
-      margin-bottom: 15px;
+      line-height: 1.7;
+      font-weight: 300;
     }
 
-    .about-content p {
-      font-size: 0.95rem;
-      color: #ccc;
-      line-height: 1.6;
-      letter-spacing: 0.3px;
-    }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
+    /* --- RESPONSIVE --- */
     @media (max-width: 768px) {
-      .about-container {
+      .intro-section {
+        grid-template-columns: 1fr;
         text-align: center;
+        gap: 30px;
       }
 
-      .about-content h3 {
-        font-size: 0.95rem;
+      .profile-img {
+        margin: 0 auto;
       }
 
-      .about-content p {
-        font-size: 0.9rem;
+      .page-title {
+        font-size: 1.8rem;
+        letter-spacing: 5px;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .tools-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
   </style>
@@ -170,23 +323,142 @@
     <div class="menu-line"></div>
   </div>
 
-  <!-- About Section -->
-  <section class="about-container animate__animated animate__fadeIn">
-    <h1 class="about-title">ABOUT ME</h1>
-    <hr>
+  <!-- Main Content -->
+  <div class="about-container">
+    <h1 class="page-title">About</h1>
+    <div class="title-line"></div>
 
-    <div class="about-img animate__animated animate__fadeInUp">
-      <img src="images/demonjester.jpg" alt="Cedrick Garcia">
+    <!-- Intro Section -->
+    <div class="intro-section">
+      <img src="https://media.tenor.com/wDrtIwh5_ckAAAAM/lebron-james-mickey-mouse.gif" alt="Cedrick Garcia" class="profile-img">
+      <div class="intro-text">
+        <h2>Cedrick Garcia</h2>
+        <p>
+          Information Systems student with a passion for building clean, functional digital solutions. 
+          I specialize in full-stack development, creating seamless user experiences, and turning 
+          complex problems into elegant code. Always learning, always building.
+        </p>
+      </div>
     </div>
 
-    <div class="about-content animate__animated animate__fadeInUp">
-      <h3>Hello, I’m Cedrick Garcia</h3>
-      <p>
-        I’m an Information Systems student who loves blending logic and creativity to build clean, practical digital experiences. 
-        I enjoy designing simple interfaces, experimenting with new tools, and exploring how technology can make life smoother — 
-        not harder. Whether it’s front-end, back-end, or just breaking things to fix them better, I’m always learning and refining the craft.
+    <!-- Technical Skills -->
+    <div class="section">
+      <h3>Technical Skills</h3>
+      <div class="skills-grid">
+        <div class="skill-item">HTML/CSS</div>
+        <div class="skill-item">JavaScript</div>
+        <div class="skill-item">PHP</div>
+        <div class="skill-item">Java</div>
+        <div class="skill-item">MySQL</div>
+        <div class="skill-item">React</div>
+        <div class="skill-item">Node.js</div>
+        <div class="skill-item">Git</div>
+        <div class="skill-item">REST APIs</div>
+        <div class="skill-item">Responsive Design</div>
+        <div class="skill-item">UI/UX Design</div>
+        <div class="skill-item">Database Design</div>
+      </div>
+    </div>
+
+    <!-- Tools & Technologies -->
+    <div class="section">
+      <h3>Tools & Technologies</h3>
+      <div class="tools-grid">
+        <div class="tool-item">VS Code</div>
+        <div class="tool-item">Git/GitHub</div>
+        <div class="tool-item">Figma</div>
+        <div class="tool-item">XAMPP</div>
+        <div class="tool-item">Postman</div>
+        <div class="tool-item">Firebase</div>
+        <div class="tool-item">Tailwind CSS</div>
+        <div class="tool-item">Bootstrap</div>
+        <div class="tool-item">IntelliJ IDEA</div>
+        <div class="tool-item">Chrome DevTools</div>
+      </div>
+    </div>
+
+    <!-- Experience -->
+    <div class="section">
+      <h3>Experience & Education</h3>
+      
+      <div class="experience-item">
+        <h4>Bachelor of Science in Information Systems</h4>
+        <p class="role">Kolehiyo ng Lungsod ng Dasmarinas · 2024 - Present</p>
+        <p>
+          Focused on software development, database management, and systems analysis. 
+          Active participant in collaborative projects and tech communities.
+        </p>
+      </div>
+
+      <div class="experience-item">
+        <h4>Full-Stack Developer</h4>
+        <p class="role">Personal Projects & Freelance · 2024 - Present</p>
+        <p>
+          Developed multiple web applications including health management systems, 
+          voting platforms, and portfolio websites. Specialized in creating responsive, 
+          user-friendly interfaces with robust back-end architecture.
+        </p>
+      </div>
+    </div>
+
+    <!-- About Me -->
+    <div class="section">
+      <h3>Philosophy</h3>
+      <p style="color: #aaa; font-weight: 300; line-height: 1.8;">
+        I believe great software is invisible—it just works. My approach combines 
+        minimalist design principles with practical functionality. I'm constantly exploring 
+        new technologies and methodologies to create better digital experiences. Whether 
+        it's optimizing database queries, crafting pixel-perfect interfaces, or debugging 
+        complex systems, I'm driven by the challenge of building something meaningful.
       </p>
     </div>
-  </section>
+
+    <!-- Favorite Series -->
+    <div class="section">
+      <h3>Favorite Series</h3>
+      <div class="media-grid">
+        <div class="media-item">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRimEHbz4Blzqgcu0-qbS9jHLEKoeuxb7VwXg&s" alt="Better Call Saul">
+          <div class="media-item-title">Better Call Saul</div>
+        </div>
+        <div class="media-item">
+          <img src="https://image.tmdb.org/t/p/w500/ztkUQFLlC19CCMYHW9o1zWhJRNq.jpg" alt="Breaking Bad">
+          <div class="media-item-title">Breaking Bad</div>
+        </div>
+        <div class="media-item">
+          <img src="https://resizing.flixster.com/ZgKoj9ydS5IR92topei_WUy04yU=/fit-in/705x460/v2/https://resizing.flixster.com/lpJkDxnEFNQT1OWJjnmYfvpAHJ0=/ems.cHJkLWVtcy1hc3NldHMvdHZzZXJpZXMvUlRUVjI2NjgyOS53ZWJw" alt="Dark">
+          <div class="media-item-title">Dark</div>
+        </div>
+        <div class="media-item">
+          <img src="https://resizing.flixster.com/kj5n3G1bvB2QcQs6GYLpbwlswf4=/fit-in/352x330/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p30824090_b_v13_ac.jpg" alt="Pluribus">
+          <div class="media-item-title">Pluribus</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Favorite Movies -->
+    <div class="section">
+      <h3>Favorite Movies</h3>
+      <div class="media-grid">
+        <div class="media-item">
+          <img src="https://image.tmdb.org/t/p/w500/fhQoQfejY1hUcwyuLgpBrYs6uFt.jpg" alt="Donnie Darko">
+          <div class="media-item-title">Donnie Darko</div>
+        </div>
+        <div class="media-item">
+          <img src="https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg" alt="Interstellar">
+          <div class="media-item-title">Interstellar</div>
+        </div>
+        <div class="media-item">
+          <img src="https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p31722_p_v8_ab.jpg" alt="The Butterfly Effect">
+          <div class="media-item-title">The Butterfly Effect</div>
+        </div>
+        <div class="media-item">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhJIvATP_096dQ3d_BYgKdtToG3ezcj0ZvMQ&s" alt="Predestination">
+          <div class="media-item-title">Predestination</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </body>
 </html>
