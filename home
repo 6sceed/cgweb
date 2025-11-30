@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cedrick Garcia - Web Developer</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+      background: url('images/darkbg.jpg') center center / cover no-repeat;
+      font-family: 'Poppins', sans-serif;
+      color: white;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .logo {
+      position: fixed;
+      top: 25px;
+      left: 25px;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 2px solid white;
+      background: rgba(0,0,0,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      z-index: 10;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      backdrop-filter: blur(4px);
+    }
+
+    .logo:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 10px rgba(255,255,255,0.3);
+    }
+
+    .menu-btn {
+      position: fixed;
+      top: 30px;
+      right: 35px;
+      width: 26px;
+      height: 18px;
+      cursor: pointer;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.3s ease;
+    }
+
+    .menu-btn:hover {
+      transform: scale(1.05);
+    }
+
+    .menu-line {
+      width: 100%;
+      height: 2px;
+      background-color: white;
+      border-radius: 2px;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .menu-btn:hover .menu-line {
+      transform: translateX(3px);
+      background-color: #ddd;
+    }
+
+    .menu-btn:active .menu-line {
+      background-color: white;
+    }
+
+    main {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 1;
+      width: 90%;
+    }
+
+    /* GLITCH (white-only) */
+    .glitch {
+      position: relative;
+      display: inline-block;
+      font-size: 4.5rem;
+      font-weight: 400;
+      text-transform: uppercase;
+      color: #fff;
+      letter-spacing: 0.6rem;
+      animation: glitch 2s infinite;
+    }
+
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      color: #fff;
+      background: transparent;
+      clip-path: inset(0 0 0 0);
+    }
+
+    .glitch::before {
+      animation: glitchTop 2s infinite;
+      opacity: 0.9;
+    }
+
+    .glitch::after {
+      animation: glitchBottom 2s infinite;
+      opacity: 0.9;
+    }
+
+    @keyframes glitch {
+      0% { transform: none; }
+      20% { transform: skew(0.3deg, 0.3deg); }
+      40% { transform: translateX(-2px); }
+      60% { transform: translateX(2px); }
+      80% { transform: translateY(-1px); }
+      100% { transform: none; }
+    }
+
+    @keyframes glitchTop {
+      0% { clip-path: inset(0 0 90% 0); transform: translateX(0); }
+      10% { clip-path: inset(10% 0 80% 0); transform: translateX(-2px); }
+      20% { clip-path: inset(20% 0 60% 0); transform: translateX(2px); }
+      30% { clip-path: inset(30% 0 50% 0); transform: translateX(-1px); }
+      40%, 100% { clip-path: inset(0 0 0 0); transform: none; }
+    }
+
+    @keyframes glitchBottom {
+      0% { clip-path: inset(90% 0 0 0); transform: translateX(0); }
+      10% { clip-path: inset(80% 0 10% 0); transform: translateX(1px); }
+      20% { clip-path: inset(60% 0 30% 0); transform: translateX(-2px); }
+      30% { clip-path: inset(50% 0 40% 0); transform: translateX(2px); }
+      40%, 100% { clip-path: inset(0 0 0 0); transform: none; }
+    }
+
+    /* wrapper that keeps the tagline anchored to the bottom of the name */
+    .title-wrap {
+      position: relative;
+      display: inline-block; /* keeps it centered by the parent's text-align */
+    }
+
+    /* put <p> exactly at the bottom of the H1 (attached) */
+    .title-wrap .tagline {
+      position: absolute;
+      top: 100%;               /* bottom of the H1 */
+      left: 3%;
+      transform: translateX(-50%);
+      margin: 0;
+      font-size: 1rem;
+      color: #636363;
+      letter-spacing: 0.4px;
+      font-weight: 400;
+      opacity: 0.95;
+      animation: glitch 2s infinite;
+      display: inline-block;
+      /* small gap; if you want it flush, set top: 100% and remove translateY */
+      margin-top: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .glitch {
+        font-size: 2.8rem;
+        letter-spacing: 0.3rem;
+      }
+      .title-wrap .tagline {
+        font-size: 0.9rem;
+        margin-top: 6px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+    <div class="logo" onclick="window.location.href='home'">C</div>  <div class="menu-btn" onclick="window.location.href='menu.html'">
+    <div class="menu-line"></div>
+    <div class="menu-line"></div>
+  </div>
+
+  <main>
+    <div class="intro">
+      <div class="title-wrap">
+        <h1 class="glitch" data-text="CEDRICK GARCIA">CEDRICK GARCIA</h1>
+        <p class="glitch tagline" data-text="The world hasn't ended yet.">The world hasn't ended yet.</p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
