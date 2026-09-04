@@ -1,207 +1,149 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Cedrick Garcia - Web Developer</title>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    html, body {
-      height: 100%;
-      width: 100%;
-      background: url('images/darkbg.jpg') center center / cover no-repeat;
-      font-family: 'Poppins', sans-serif;
-      color: white;
-      overflow-x: hidden;
-      position: relative;
-    }
-
-    .logo {
-      position: fixed;
-      top: 25px;
-      left: 25px;
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      border: 2px solid white;
-      background: rgba(0,0,0,0.4);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 1.1rem;
-      cursor: pointer;
-      z-index: 10;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      backdrop-filter: blur(4px);
-    }
-
-    .logo:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 10px rgba(255,255,255,0.3);
-    }
-
-    .menu-btn {
-      position: fixed;
-      top: 30px;
-      right: 35px;
-      width: 26px;
-      height: 18px;
-      cursor: pointer;
-      z-index: 10;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: transform 0.3s ease;
-    }
-
-    .menu-btn:hover {
-      transform: scale(1.05);
-    }
-
-    .menu-line {
-      width: 100%;
-      height: 2px;
-      background-color: white;
-      border-radius: 2px;
-      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .menu-btn:hover .menu-line {
-      transform: translateX(3px);
-      background-color: #ddd;
-    }
-
-    .menu-btn:active .menu-line {
-      background-color: white;
-    }
-
-    main {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      z-index: 1;
-      width: 90%;
-    }
-
-    /* GLITCH (white-only) */
-    .glitch {
-      position: relative;
-      display: inline-block;
-      font-size: 4.5rem;
-      font-weight: 400;
-      text-transform: uppercase;
-      color: #fff;
-      letter-spacing: 0.6rem;
-      animation: glitch 2s infinite;
-    }
-
-    .glitch::before,
-    .glitch::after {
-      content: attr(data-text);
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      color: #fff;
-      background: transparent;
-      clip-path: inset(0 0 0 0);
-    }
-
-    .glitch::before {
-      animation: glitchTop 2s infinite;
-      opacity: 0.9;
-    }
-
-    .glitch::after {
-      animation: glitchBottom 2s infinite;
-      opacity: 0.9;
-    }
-
-    @keyframes glitch {
-      0% { transform: none; }
-      20% { transform: skew(0.3deg, 0.3deg); }
-      40% { transform: translateX(-2px); }
-      60% { transform: translateX(2px); }
-      80% { transform: translateY(-1px); }
-      100% { transform: none; }
-    }
-
-    @keyframes glitchTop {
-      0% { clip-path: inset(0 0 90% 0); transform: translateX(0); }
-      10% { clip-path: inset(10% 0 80% 0); transform: translateX(-2px); }
-      20% { clip-path: inset(20% 0 60% 0); transform: translateX(2px); }
-      30% { clip-path: inset(30% 0 50% 0); transform: translateX(-1px); }
-      40%, 100% { clip-path: inset(0 0 0 0); transform: none; }
-    }
-
-    @keyframes glitchBottom {
-      0% { clip-path: inset(90% 0 0 0); transform: translateX(0); }
-      10% { clip-path: inset(80% 0 10% 0); transform: translateX(1px); }
-      20% { clip-path: inset(60% 0 30% 0); transform: translateX(-2px); }
-      30% { clip-path: inset(50% 0 40% 0); transform: translateX(2px); }
-      40%, 100% { clip-path: inset(0 0 0 0); transform: none; }
-    }
-
-    /* wrapper that keeps the tagline anchored to the bottom of the name */
-    .title-wrap {
-      position: relative;
-      display: inline-block; /* keeps it centered by the parent's text-align */
-    }
-
-    /* put <p> exactly at the bottom of the H1 (attached) */
-    .title-wrap .tagline {
-      position: absolute;
-      top: 100%;               /* bottom of the H1 */
-      left: 3%;
-      transform: translateX(-50%);
-      margin: 0;
-      font-size: 1rem;
-      color: #636363;
-      letter-spacing: 0.4px;
-      font-weight: 400;
-      opacity: 0.95;
-      animation: glitch 2s infinite;
-      display: inline-block;
-      /* small gap; if you want it flush, set top: 100% and remove translateY */
-      margin-top: 8px;
-    }
-
-    @media (max-width: 768px) {
-      .glitch {
-        font-size: 2.8rem;
-        letter-spacing: 0.3rem;
-      }
-      .title-wrap .tagline {
-        font-size: 0.9rem;
-        margin-top: 6px;
-      }
-    }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cedrick Garcia | Web Development & Technology Portfolio</title>
+  <meta name="description" content="Cedrick Garcia's portfolio: Information Systems, full-stack development, programming, and practical digital projects.">
+  <link rel="canonical" href="https://cedrickgarcia.tech/home.htm">
+  <meta property="og:title" content="Cedrick Garcia | Web Development & Technology Portfolio">
+  <meta property="og:description" content="A portfolio covering software development, systems, databases, and practical digital projects.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cedrickgarcia.tech/home.htm">
+  <meta property="og:image" content="https://cedrickgarcia.tech/images/myface.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Cedrick Garcia | Web Development & Technology Portfolio">
+  <meta name="twitter:description" content="Full-stack development, systems thinking, and practical digital projects by Cedrick Garcia.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {"@type":"Person","name":"Cedrick Garcia","url":"https://cedrickgarcia.tech/home.htm","email":"mailto:zenovcozru66@gmail.com","sameAs":["https://github.com/6sceed","https://www.facebook.com/cedie66?mibextid=ZbWKwL","https://www.instagram.com/cedisafk/profilecard/?igsh=MWdxOHByZDRiMTIzYQ=="]},
+      {"@type":"WebSite","name":"Cedrick Garcia Portfolio","url":"https://cedrickgarcia.tech/"}
+    ]
+  }
+  </script>
 </head>
-
 <body>
-  <div class="logo" onclick="window.location.href='home.htm'">C</div>
-
-  <div class="menu-btn" onclick="window.location.href='menu.html'">
-    <div class="menu-line"></div>
-    <div class="menu-line"></div>
-  </div>
+<div class="site-shell">
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="#home" aria-label="Cedrick Garcia home"><span class="brand-mark">C</span><span class="brand-label">CEDRICK.GARCIA // NODE</span></a>
+      <button class="menu-toggle mono" id="menuToggle" aria-expanded="false" aria-controls="siteNav">MENU</button>
+      <nav class="nav" id="siteNav" aria-label="Primary navigation">
+        <a href="#home"><span>[00]</span> HOME</a>
+        <a href="#whoami"><span>[01]</span> WHOAMI</a>
+        <a href="#projects"><span>[02]</span> PROJECTS</a>
+        <a href="#skills"><span>[03]</span> SKILLS</a>
+        <a href="#lab"><span>[04]</span> NOTES</a>
+        <a href="#contact"><span>[05]</span> CONTACT</a>
+      </nav>
+    </div>
+  </header>
 
   <main>
-    <div class="intro">
-      <div class="title-wrap">
-        <h1 class="glitch" data-text="CEDRICK GARCIA">CEDRICK GARCIA</h1>
-        <p class="glitch tagline" data-text="The world hasn't ended yet.">The world hasn't ended yet.</p>
+    <section class="hero" id="home">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="boot">[ SESSION 06:43:12 ]<br><strong>LOCAL PROFILE FOUND</strong><br>rendering public portfolio / personal workspace</div>
+          <p class="eyebrow">SYSTEMS / WEB / CODE</p>
+          <h1>Cedrick<br><span>Garcia</span></h1>
+          <p class="hero-lede">An Information Systems student and full-stack developer building useful digital systems through programming, thoughtful interfaces, and practical problem solving.</p>
+          <div class="command-bar" aria-label="Terminal shortcuts">
+            <button class="command" data-command="whoami">whoami</button>
+            <button class="command" data-command="projects">projects</button>
+            <button class="command" data-command="skills">skills</button>
+            <button class="command" data-command="contact">contact</button>
+          </div>
+        </div>
+        <aside class="hero-aside" aria-label="Decorative system status">
+          <div class="ascii"> ██████  ██      ██████  ██████  ██   ██
+██       ██     ██   ██  ██  ██   ██ ██
+██  ███  ██     ██   ██  ██████    ███
+██   ██  ██     ██   ██  ██ ██     ███
+ ██████  ██████  ██████  ██  ██    ███</div>
+          <div class="status-list">
+            <div class="status-row"><span>SYSTEM STATUS</span><span>ONLINE</span></div>
+            <div class="status-row"><span>MODE</span><span>PERSONAL</span></div>
+            <div class="status-row"><span>LOCATION</span><span>UNCONFIGURED</span></div>
+            <div class="status-row"><span>UPTIME</span><span id="uptime">00:00:00</span></div>
+            <div class="status-row"><span>SESSION</span><span>ACTIVE</span></div>
+          </div>
+        </aside>
       </div>
-    </div>
+    </section>
+
+    <section id="whoami">
+      <div class="wrap">
+        <div class="section-head"><div><p class="section-kicker">/ identity profile</p><h2>Whoami</h2></div><span class="section-number">01 // PUBLIC RECORD</span></div>
+        <div class="identity-grid">
+          <article class="panel">
+            <div class="profile-row"><img src="images/myface.jpg" alt="Portrait of Cedrick Garcia"><div><h3>CEDRICK GARCIA</h3><p>INFORMATION SYSTEMS / FULL-STACK DEVELOPMENT</p></div></div>
+            <p>I am an Information Systems student interested in full-stack development, programming, and practical digital solutions. I like working across the visible interface and the underlying systems that make it reliable.</p>
+            <div class="interests"><span class="tag">PROGRAMMING</span><span class="tag">WEB DEVELOPMENT</span><span class="tag">DIGITAL SYSTEMS</span><span class="tag">DATABASES</span></div>
+          </article>
+          <article class="panel timeline">
+            <div class="timeline-item"><h3>Bachelor of Science in Information Systems</h3><span class="time">KOLEHIYO NG LUNGSOD NG DASMARINAS / 2024 - PRESENT</span><p class="muted">Focused on software development, database management, and systems analysis.</p></div>
+            <div class="timeline-item"><h3>Full-Stack Developer</h3><span class="time">PERSONAL PROJECTS &amp; SECURITY RESEARCH / 2024 - PRESENT</span><p class="muted">Building web apps, security projects, and interactive systems. Learning and experimenting with cybersecurity, networking, automation, and full-stack development through personal projects.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="wrap">
+        <div class="section-head"><div><p class="section-kicker">/ root / projects</p><h2>Case Files</h2></div><span class="section-number">02 // 2 ACTIVE RECORDS</span></div>
+        <div class="projects-grid">
+          <article class="project-card" data-project="health" tabindex="0" role="button" aria-label="Open KLD Health Management System case file"><div class="project-body"><div class="project-meta"><span>PROJECT_001</span><span>COMPLETE</span></div><h3>KLD Health Management System</h3><p>School health appointment system designed to replace a paper-based booking process.</p><div class="project-stack"><span>JAVA SWING</span><span>MYSQL</span><span>XAMPP</span></div><span class="card-action">[ OPEN CASE FILE ]</span></div></article>
+          <article class="project-card" data-project="vote" tabindex="0" role="button" aria-label="Open VoteEase case file"><div class="project-body"><div class="project-meta"><span>PROJECT_002</span><span>COMPLETE</span></div><h3>VoteEase - Online Voting System</h3><p>Responsive voting platform with authentication, live results, and administrator controls.</p><div class="project-stack"><span>PHP</span><span>MYSQL</span><span>JAVASCRIPT</span><span>TAILWIND</span></div><span class="card-action">[ OPEN CASE FILE ]</span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="wrap">
+        <div class="section-head"><div><p class="section-kicker">/ capability matrix</p><h2>Skills</h2></div><span class="section-number">03 // SELF-REPORTED TOOLSET</span></div>
+        <div class="identity-grid">
+          <div class="capability-grid">
+            <div class="capability"><div class="capability-head"><span>WEB</span><span>01</span></div><small>HTML / CSS / JAVASCRIPT / RESPONSIVE DESIGN</small></div>
+            <div class="capability"><div class="capability-head"><span>PROGRAMMING</span><span>02</span></div><small>PHP / JAVA / JAVASCRIPT / REACT / NODE.JS</small></div>
+            <div class="capability"><div class="capability-head"><span>DATA</span><span>03</span></div><small>MYSQL / DATABASE DESIGN / FIREBASE</small></div>
+            <div class="capability"><div class="capability-head"><span>SYSTEMS</span><span>04</span></div><small>REST APIS / GIT / UI/UX / TOOLING</small></div>
+          </div>
+          <article class="panel"><h3>Tools in rotation</h3><p>Working tools and technologies documented from the existing portfolio.</p><div class="tool-list"><span class="tag">VS CODE</span><span class="tag">GIT / GITHUB</span><span class="tag">FIGMA</span><span class="tag">XAMPP</span><span class="tag">POSTMAN</span><span class="tag">TAILWIND CSS</span><span class="tag">BOOTSTRAP</span><span class="tag">INTELLIJ IDEA</span><span class="tag">CHROME DEVTOOLS</span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="lab">
+      <div class="wrap">
+        <div class="section-head"><div><p class="section-kicker">/ notes</p><h2>Open Bench</h2></div><span class="section-number">04 // CONTENT QUEUED</span></div>
+        <div class="lab-panel"><div><h3>NOTES // UNDER CONSTRUCTION</h3><p>A reserved space for programming notes, experiments, design studies, and useful things learned while building.</p></div><div class="lab-code">[ STATUS: STANDBY ]<br>[ ENTRIES: 00 ]<br>[ NEXT: ADD A RECORD ]</div></div>
+      </div>
+    </section>
+
+    <section id="terminal-section">
+      <div class="wrap">
+        <div class="section-head"><div><p class="section-kicker">/ local terminal</p><h2>Console</h2></div><span class="section-number">SAFE CLIENT-SIDE SIMULATION</span></div>
+        <div class="terminal"><div class="terminal-head"><span>visitor@cedrick:~</span><span>LOCAL / READ ONLY</span></div><div class="terminal-output" id="terminalOutput"><p class="terminal-line">Session ready. Type help to inspect available commands.</p></div><form class="terminal-form" id="terminalForm"><label for="terminalInput">visitor@cedrick:~$</label><input id="terminalInput" autocomplete="off" spellcheck="false" aria-label="Terminal command"></form></div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="section-head"><div><p class="section-kicker">/ contact channel</p><h2>Make Contact</h2></div><span class="section-number">05 // PUBLIC ROUTES</span></div>
+        <div class="contact-grid"><article class="panel"><h3>Open channel</h3><p>For project conversations, collaborations, or useful technical questions, reach me through the public routes below.</p><div class="contact-links"><a class="contact-link" href="mailto:zenovcozru66@gmail.com"><span>EMAIL</span><span>zenovcozru66@gmail.com</span></a><a class="contact-link" href="https://github.com/6sceed" target="_blank" rel="noreferrer"><span>GITHUB</span><span>github.com/6sceed</span></a><a class="contact-link" href="https://www.facebook.com/cedie66?mibextid=ZbWKwL" target="_blank" rel="noreferrer"><span>FACEBOOK</span><span>cedie66</span></a><a class="contact-link" href="https://www.instagram.com/cedisafk/profilecard/?igsh=MWdxOHByZDRiMTIzYQ==" target="_blank" rel="noreferrer"><span>INSTAGRAM</span><span>@cedisafk</span></a></div></article><article class="panel"><h3>Message endpoint</h3><form action="https://api.web3forms.com/submit" method="POST"><input type="hidden" name="access_key" value="f903f37c-af56-447c-aba0-42763bd612c5"><label class="mono muted" for="name">NAME</label><input id="name" name="name" required style="display:block;width:100%;margin:6px 0 15px;padding:11px;background:#070908;border:1px solid #26332d;color:#e7eee9"><label class="mono muted" for="email">EMAIL</label><input id="email" type="email" name="email" required style="display:block;width:100%;margin:6px 0 15px;padding:11px;background:#070908;border:1px solid #26332d;color:#e7eee9"><label class="mono muted" for="message">MESSAGE</label><textarea id="message" name="message" required rows="5" style="display:block;width:100%;margin:6px 0 15px;padding:11px;background:#070908;border:1px solid #26332d;color:#e7eee9;resize:vertical"></textarea><button class="command" type="submit">send message</button></form></article></div>
+      </div>
+    </section>
   </main>
+  <footer class="footer"><div class="wrap footer-inner"><span>CEDRICK GARCIA // PORTFOLIO NODE</span><span>BUILT WITH HTML / CSS / JAVASCRIPT</span></div></footer>
+</div>
+
+<div class="modal" id="projectModal" aria-hidden="true"><div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-top"><h2 id="modalTitle">Case file</h2><button class="modal-close" type="button" aria-label="Close case file">CLOSE</button></div><div id="modalContent"></div></div></div>
+<script src="app.js"></script>
 </body>
 </html>
