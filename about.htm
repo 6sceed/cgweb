@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Me - Cedrick Garcia</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #000;
+      color: #fff;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* --- LOGO --- */
+    .logo {
+      position: fixed;
+      top: 25px;
+      left: 25px;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 2px solid white;
+      background: rgba(0, 0, 0, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      z-index: 10;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      backdrop-filter: blur(4px);
+    }
+
+    .logo:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    }
+
+    /* --- MENU --- */
+    .menu-btn {
+      position: fixed;
+      top: 30px;
+      right: 35px;
+      width: 28px;
+      height: 20px;
+      cursor: pointer;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.3s ease;
+    }
+
+    .menu-btn:hover {
+      transform: scale(1.05);
+    }
+
+    .menu-line {
+      width: 100%;
+      height: 2px;
+      background-color: white;
+      border-radius: 2px;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .menu-btn:hover .menu-line {
+      transform: translateX(3px);
+      background-color: #ccc;
+    }
+
+    /* --- MAIN CONTAINER --- */
+    .about-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 100px 30px 80px;
+    }
+
+    .page-title {
+      font-size: 2.5rem;
+      font-weight: 300;
+      letter-spacing: 8px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .title-line {
+      width: 60px;
+      height: 1px;
+      background: #fff;
+      margin: 0 auto 60px;
+    }
+
+    /* --- INTRO SECTION --- */
+    .intro-section {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 40px;
+      margin-bottom: 80px;
+      align-items: center;
+    }
+
+    .profile-img {
+      width: 200px;
+      height: 200px;
+      border: 1px solid #333;
+      object-fit: cover;
+      filter: grayscale(100%);
+      transition: filter 0.4s ease;
+    }
+
+    .profile-img:hover {
+      filter: grayscale(0%);
+    }
+
+    .intro-text h2 {
+      font-size: 1.8rem;
+      font-weight: 400;
+      margin-bottom: 15px;
+      letter-spacing: 2px;
+    }
+
+    .intro-text p {
+      font-size: 0.95rem;
+      color: #aaa;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    /* --- SECTION HEADERS --- */
+    .section {
+      margin-bottom: 60px;
+    }
+
+    .section h3 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 25px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .section h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 1px;
+      background: #fff;
+    }
+
+    /* --- SKILLS GRID --- */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 15px;
+    }
+
+    .skill-item {
+      background: transparent;
+      border: 1px solid #222;
+      padding: 15px;
+      text-align: center;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      font-weight: 400;
+    }
+
+    .skill-item:hover {
+      background: #fff;
+      color: #000;
+      border-color: #fff;
+    }
+
+    /* --- TOOLS GRID --- */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 12px;
+    }
+
+    .tool-item {
+      background: transparent;
+      border: 1px solid #222;
+      padding: 12px;
+      text-align: center;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      color: #888;
+      transition: all 0.3s ease;
+      font-weight: 400;
+    }
+
+    .tool-item:hover {
+      background: #fff;
+      color: #000;
+      border-color: #fff;
+    }
+
+    /* --- EXPERIENCE --- */
+    .experience-item {
+      margin-bottom: 30px;
+      padding-left: 20px;
+      border-left: 1px solid #333;
+    }
+
+    .experience-item h4 {
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      margin-bottom: 5px;
+    }
+
+    .experience-item .role {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 8px;
+      font-weight: 400;
+    }
+
+    .experience-item p {
+      font-size: 0.9rem;
+      color: #aaa;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 768px) {
+      .intro-section {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 30px;
+      }
+
+      .profile-img {
+        margin: 0 auto;
+      }
+
+      .page-title {
+        font-size: 1.8rem;
+        letter-spacing: 5px;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .tools-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Logo -->
+  <div class="logo" onclick="window.location.href='home.htm'">C</div>
+
+  <!-- Menu Icon -->
+  <div class="menu-btn" onclick="window.location.href='menu.html'">
+    <div class="menu-line"></div>
+    <div class="menu-line"></div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="about-container">
+    <h1 class="page-title">About</h1>
+    <div class="title-line"></div>
+
+    <!-- Intro Section -->
+    <div class="intro-section">
+      <img src="https://media.tenor.com/wDrtIwh5_ckAAAAM/lebron-james-mickey-mouse.gif" alt="Cedrick Garcia" class="profile-img">
+      <div class="intro-text">
+        <h2>Cedrick Garcia</h2>
+        <p>
+          Information Systems student with a passion for building clean, functional digital solutions. 
+          I specialize in full-stack development, creating seamless user experiences, and turning 
+          complex problems into elegant code. Always learning, always building.
+        </p>
+      </div>
+    </div>
+
+    <!-- Technical Skills -->
+    <div class="section">
+      <h3>Technical Skills</h3>
+      <div class="skills-grid">
+        <div class="skill-item">HTML/CSS</div>
+        <div class="skill-item">JavaScript</div>
+        <div class="skill-item">PHP</div>
+        <div class="skill-item">Java</div>
+        <div class="skill-item">MySQL</div>
+        <div class="skill-item">React</div>
+        <div class="skill-item">Node.js</div>
+        <div class="skill-item">Git</div>
+        <div class="skill-item">REST APIs</div>
+        <div class="skill-item">Responsive Design</div>
+        <div class="skill-item">UI/UX Design</div>
+        <div class="skill-item">Database Design</div>
+      </div>
+    </div>
+
+    <!-- Tools & Technologies -->
+    <div class="section">
+      <h3>Tools & Technologies</h3>
+      <div class="tools-grid">
+        <div class="tool-item">VS Code</div>
+        <div class="tool-item">Git/GitHub</div>
+        <div class="tool-item">Figma</div>
+        <div class="tool-item">XAMPP</div>
+        <div class="tool-item">Postman</div>
+        <div class="tool-item">Firebase</div>
+        <div class="tool-item">Tailwind CSS</div>
+        <div class="tool-item">Bootstrap</div>
+        <div class="tool-item">IntelliJ IDEA</div>
+        <div class="tool-item">Chrome DevTools</div>
+      </div>
+    </div>
+
+    <!-- Experience -->
+    <div class="section">
+      <h3>Experience & Education</h3>
+      
+      <div class="experience-item">
+        <h4>Bachelor of Science in Information Systems</h4>
+        <p class="role">Kolehiyo ng Lungsod ng Dasmarinas · 2024 - Present</p>
+        <p>
+          Focused on software development, database management, and systems analysis. 
+          Active participant in collaborative projects and tech communities.
+        </p>
+      </div>
+
+      <div class="experience-item">
+        <h4>Full-Stack Developer</h4>
+        <p class="role">Personal Projects & Freelance · 2024 - Present</p>
+        <p>
+          Developed multiple web applications including health management systems, 
+          voting platforms, and portfolio websites. Specialized in creating responsive, 
+          user-friendly interfaces with robust back-end architecture.
+        </p>
+      </div>
+    </div>
+
+    <!-- About Me -->
+    <div class="section">
+      <h3>Philosophy</h3>
+      <p style="color: #aaa; font-weight: 300; line-height: 1.8;">
+        I believe great software is invisible—it just works. My approach combines 
+        minimalist design principles with practical functionality. I'm constantly exploring 
+        new technologies and methodologies to create better digital experiences. Whether 
+        it's optimizing database queries, crafting pixel-perfect interfaces, or debugging 
+        complex systems, I'm driven by the challenge of building something meaningful.
+      </p>
+    </div>
+
+  </div>
+</body>
+</html>
